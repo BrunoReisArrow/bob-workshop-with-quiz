@@ -1,0 +1,36 @@
+site_name: IBM Bob Workshop
+site_description: Hands-on Labs for IBM Bob
+docs_dir: docs
+theme:
+  name: material
+  palette:
+    - scheme: default
+      primary: blue
+      accent: light blue
+      toggle:
+        icon: material/weather-night
+        name: Switch to dark mode
+    - scheme: slate
+      primary: blue
+      accent: light blue
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to light mode
+  features:
+    - navigation.tabs
+    - navigation.top
+    - content.code.copy
+
+extra_css:
+  - stylesheets/extra.css
+
+extra_javascript:
+  - javascripts/quiz.js
+
+nav:
+  - Home: index.md
+  - "Lab 1 — Generate a Full-Stack Application": lab1.md
+  - "Lab 2 — Explain, Extend and Document": lab2.md
+  - "Lab 3 — Search and Fix Vulnerabilities": lab3.md
+  - "Lab 4 — Translate Code Python → JavaScript": lab4.md
+  - "Lab 5 — Modernize Legacy Java Code": lab5.md
