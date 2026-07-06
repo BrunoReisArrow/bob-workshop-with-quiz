@@ -1,0 +1,2000 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Hands-on Labs for IBM Bob">
+      
+      
+      
+      
+        <link rel="prev" href="../lab1/">
+      
+      
+        <link rel="next" href="../lab3/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Lab 2 — Explain, Extend and Document - IBM Bob Workshop</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="light-blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#lab-2-understanding-documenting-and-modifying-an-existing-application-with-bob" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="IBM Bob Workshop" class="md-header__button md-logo" aria-label="IBM Bob Workshop" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            IBM Bob Workshop
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Lab 2 — Explain, Extend and Document
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="light-blue"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="light-blue"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../lab1/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Lab 1 — Generate a Full-Stack Application
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="./" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Lab 2 — Explain, Extend and Document
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../lab3/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Lab 3 — Search and Fix Vulnerabilities
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../lab4/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Lab 4 — Translate Code Python → JavaScript
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../lab5/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Lab 5 — Modernize Legacy Java Code
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="IBM Bob Workshop" class="md-nav__button md-logo" aria-label="IBM Bob Workshop" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    IBM Bob Workshop
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab 1 — Generate a Full-Stack Application
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab 2 — Explain, Extend and Document
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab 2 — Explain, Extend and Document
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Overview
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#before-starting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Before Starting
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-youll-learn" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What You'll Learn
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#understanding-ask-mode-vs-code-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Understanding Ask Mode vs Code Mode
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lab-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lab Structure
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-1-set-up-the-project" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 1: Set up the project
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 1: Set up the project">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-extract-and-open-the-project-optional-only-for-those-who-did-not-complete-lab1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1: Extract and open the project (OPTIONAL - only for those who did not complete Lab1)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-open-the-application-frontend-optional-only-for-those-who-did-not-complete-lab1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2: Open the application frontend (OPTIONAL - only for those who did not complete Lab1)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-2-understanding-the-existing-application" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 2: Understanding the existing application
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 2: Understanding the existing application">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-analyze-and-document-the-project-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1: Analyze and document the project structure
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-3-identifying-required-file-changes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 3: Identifying required file changes
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 3: Identifying required file changes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-ask-bob-which-files-need-to-change" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1: Ask Bob which files need to change
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-4-try-the-literate-coding-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 4: Try the literate coding mode
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 4: Try the literate coding mode">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-open-one-of-the-files-that-required-changes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1: Open one of the files that required changes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-activate-the-literate-coding-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2: Activate the literate coding mode
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-make-the-change-that-bob-suggested-for-that-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3: Make the change that Bob suggested for that file
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#44-review-the-changes-and-accept-them" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.4: Review the changes and accept them
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-5-finish-implementing-the-new-feature" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 5: Finish implementing the new feature
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 5: Finish implementing the new feature">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-switch-to-agent-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1: Switch to Agent Mode
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-ask-bob-to-implement-the-feature" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2: Ask Bob to implement the feature
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53-reviewing-bobs-proposed-changes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3: Reviewing Bob's proposed changes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#54-apply-the-generated-changes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.4: Apply the generated changes
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-6-testing-the-updated-application" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 6: Testing the updated application
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 6: Testing the updated application">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-run-the-application" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1: Run the application
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-open-the-frontend" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2: Open the frontend.
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63-test-the-new-feature" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.3: Test the new feature
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-7-generate-documentation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 7: Generate documentation
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 7: Generate documentation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#71-open-the-mode-marketplace-in-bob" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.1: Open the Mode marketplace in Bob
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#72-start-creating-a-new-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.2: Start creating a new mode
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#73-define-the-new-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.3: Define the new mode
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#74-switch-to-the-documentation-writer-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.4: Switch to the Documentation Writer mode
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#75-generate-the-documentation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.5: Generate the documentation
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-8-explore-the-bob-findings-feature-optional" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 8: Explore the Bob Findings feature (optional)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 8: Explore the Bob Findings feature (optional)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#81-open-bob-findings" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.1: Open Bob Findings
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#82-scan-a-file-for-vulnerabilities" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.2: Scan a file for vulnerabilities
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#83-go-to-the-finding-location" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.3: Go to the finding location
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#84-fix-the-finding-with-bob" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.4: Fix the finding with Bob
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#85-review-the-changes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.5: Review the changes
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#congratulations-youve-completed-lab-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Congratulations 🎉 You've completed Lab 2!
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lab-quiz-unlock-the-next-lab" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🎓 Lab Quiz — Unlock the Next Lab
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab 3 — Search and Fix Vulnerabilities
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab 4 — Translate Code Python → JavaScript
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab 5 — Modernize Legacy Java Code
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Overview
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#before-starting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Before Starting
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-youll-learn" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What You'll Learn
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#understanding-ask-mode-vs-code-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Understanding Ask Mode vs Code Mode
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lab-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lab Structure
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-1-set-up-the-project" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 1: Set up the project
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 1: Set up the project">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-extract-and-open-the-project-optional-only-for-those-who-did-not-complete-lab1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1: Extract and open the project (OPTIONAL - only for those who did not complete Lab1)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-open-the-application-frontend-optional-only-for-those-who-did-not-complete-lab1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2: Open the application frontend (OPTIONAL - only for those who did not complete Lab1)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-2-understanding-the-existing-application" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 2: Understanding the existing application
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 2: Understanding the existing application">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-analyze-and-document-the-project-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1: Analyze and document the project structure
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-3-identifying-required-file-changes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 3: Identifying required file changes
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 3: Identifying required file changes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-ask-bob-which-files-need-to-change" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1: Ask Bob which files need to change
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-4-try-the-literate-coding-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 4: Try the literate coding mode
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 4: Try the literate coding mode">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-open-one-of-the-files-that-required-changes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1: Open one of the files that required changes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-activate-the-literate-coding-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2: Activate the literate coding mode
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-make-the-change-that-bob-suggested-for-that-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3: Make the change that Bob suggested for that file
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#44-review-the-changes-and-accept-them" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.4: Review the changes and accept them
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-5-finish-implementing-the-new-feature" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 5: Finish implementing the new feature
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 5: Finish implementing the new feature">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-switch-to-agent-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1: Switch to Agent Mode
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-ask-bob-to-implement-the-feature" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2: Ask Bob to implement the feature
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53-reviewing-bobs-proposed-changes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3: Reviewing Bob's proposed changes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#54-apply-the-generated-changes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.4: Apply the generated changes
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-6-testing-the-updated-application" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 6: Testing the updated application
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 6: Testing the updated application">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-run-the-application" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1: Run the application
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-open-the-frontend" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2: Open the frontend.
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63-test-the-new-feature" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.3: Test the new feature
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-7-generate-documentation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 7: Generate documentation
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 7: Generate documentation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#71-open-the-mode-marketplace-in-bob" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.1: Open the Mode marketplace in Bob
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#72-start-creating-a-new-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.2: Start creating a new mode
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#73-define-the-new-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.3: Define the new mode
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#74-switch-to-the-documentation-writer-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.4: Switch to the Documentation Writer mode
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#75-generate-the-documentation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.5: Generate the documentation
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-8-explore-the-bob-findings-feature-optional" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 8: Explore the Bob Findings feature (optional)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 8: Explore the Bob Findings feature (optional)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#81-open-bob-findings" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.1: Open Bob Findings
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#82-scan-a-file-for-vulnerabilities" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.2: Scan a file for vulnerabilities
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#83-go-to-the-finding-location" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.3: Go to the finding location
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#84-fix-the-finding-with-bob" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.4: Fix the finding with Bob
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#85-review-the-changes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.5: Review the changes
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#congratulations-youve-completed-lab-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Congratulations 🎉 You've completed Lab 2!
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lab-quiz-unlock-the-next-lab" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🎓 Lab Quiz — Unlock the Next Lab
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<div class="lab-lock-overlay" id="lock-lab2">
+  <div class="lock-content">
+    <span class="lock-icon">🔒</span>
+    <h2>This lab is locked</h2>
+    <p>Complete the quiz at the end of the previous lab to unlock this content.</p>
+    <button class="lock-back-btn" onclick="goBackFromLock()">← Go Back</button>
+  </div>
+</div>
+
+<h1 id="lab-2-understanding-documenting-and-modifying-an-existing-application-with-bob">Lab 2: Understanding, Documenting and Modifying an Existing Application with Bob</h1>
+<h2 id="overview">Overview</h2>
+<p>In this lab, you'll learn how to use Bob to understand, document, and modify an existing application. Instead of building an application from scratch, you will work on a prebuilt application and use Bob to explore the codebase, identify relevant files, and implement a new feature.</p>
+<p>This reflects a very common real-world scenario, where developers often work on existing projects rather than starting from zero.</p>
+<p>The application used in this lab corresponds to the application developed in Lab 1.</p>
+<h2 id="before-starting">Before Starting</h2>
+<p>Make sure you have:
+- IBM Bob access
+- Python 3.8+
+- Node.js 14+
+- A terminal
+- A local workspace where Bob can create files and run commands</p>
+<p>Download the application ZIP file <a href="../assets/lab2/application.zip">here</a>. Place it somewhere easily accessible on your computer, such as:
+- Desktop
+- Documents folder
+- Downloads folder</p>
+<p>You will extract and open this project in IBM Bob during the first step of the lab.</p>
+<h2 id="what-youll-learn">What You'll Learn</h2>
+<p>By the end of this lab, you will:
+- ✅ Use Bob to understand an unfamiliar codebase
+- ✅ Learn how Bob analyzes project structure and dependencies
+- ✅ Identify which files need to be modified for a feature request
+- ✅ Compare Ask Mode vs Agent Mode behaviors
+- ✅ Understand approval workflows and auto-approvals
+- ✅ Modify an existing full-stack application</p>
+<h2 id="understanding-ask-mode-vs-code-mode">Understanding Ask Mode vs Code Mode</h2>
+<p>This lab demonstrated an important distinction between Bob modes:</p>
+<table>
+<thead>
+<tr>
+<th>Ask Mode</th>
+<th>Agent Mode</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Understands and explains code</td>
+<td>Modifies and generates code</td>
+</tr>
+<tr>
+<td>Helps with architecture analysis</td>
+<td>Implements features</td>
+</tr>
+<tr>
+<td>Suggests implementation strategies</td>
+<td>Executes changes</td>
+</tr>
+<tr>
+<td>Ideal for learning and planning</td>
+<td>Ideal for development</td>
+</tr>
+</tbody>
+</table>
+<p>Understanding when to use each mode is one of the key productivity gains when working with Bob.</p>
+<h2 id="lab-structure">Lab Structure</h2>
+<ul>
+<li><a href="#step-1-set-up-the-project">Set up the project</a></li>
+<li><a href="#step-2-understanding-the-existing-application">Understanding the existing application</a></li>
+<li><a href="#step-3-identifying-required-file-changes">Identifying required file changes</a></li>
+<li><a href="#step-4-try-the-literate-coding-mode">Try the literate coding mode</a></li>
+<li><a href="#step-5-finish-implementing-the-new-feature">Finish implementing the new feature</a></li>
+<li><a href="#step-6-testing-the-updated-application">Testing the updated application</a></li>
+<li><a href="#step-7-generate-documentation">Generate documentation</a></li>
+<li><a href="#step-8-explore-the-bob-findings-feature-optional">Explore the Bob Findings functionality (OPTIONAL)</a></li>
+</ul>
+<hr />
+<h2 id="step-1-set-up-the-project">Step 1: Set up the project</h2>
+<blockquote>
+<p>⚠️ Participants who completed Lab 1 can use their own application files instead of the provided ZIP file.<br />
+However, some visual or structural differences may exist compared to the reference screenshots used in this guide.</p>
+</blockquote>
+<h3 id="11-extract-and-open-the-project-optional-only-for-those-who-did-not-complete-lab1">1.1: Extract and open the project (OPTIONAL - only for those who did not complete Lab1)</h3>
+<p>Extract the provided ZIP file and open that extracted folder in IBM Bob before starting the exercise.</p>
+<p><img alt="1" src="../assets/lab2/images/1.png"></p>
+<p><strong>✅ Checkpoint</strong>: The project is now open in your workspace.</p>
+<h3 id="12-open-the-application-frontend-optional-only-for-those-who-did-not-complete-lab1">1.2: Open the application frontend (OPTIONAL - only for those who did not complete Lab1)</h3>
+<p>Ask Bob to run the application:</p>
+<pre><code class="language-bash">Run the backend application.
+</code></pre>
+<p>Then, open the frontend.</p>
+<p><strong>For Windows Users</strong>:</p>
+<p>Open your application's frontend by right-clicking the <code>index.html</code> file and then selecting "Open with Live Server".</p>
+<p><img alt="2" src="../assets/lab2/images/2.png"></p>
+<p><img alt="3" src="../assets/lab2/images/3.png"></p>
+<p><strong>For macOS Users</strong>:</p>
+<p>Right-click the <code>index.html</code> file and select "Reveal in Finder"</p>
+<p><img alt="4" src="../assets/lab2/images/4.png"></p>
+<p>Then just open the file in your browser of choice.</p>
+<p><img alt="5" src="../assets/lab2/images/5.png"></p>
+<p><img alt="6" src="../assets/lab2/images/6.png"></p>
+<p>Feel free to explore the application and try it out before you advance with the lab.</p>
+<p><strong>✅ Checkpoint</strong>: Frontend loads and displays the User Interface.</p>
+<hr />
+<h2 id="step-2-understanding-the-existing-application">Step 2: Understanding the existing application</h2>
+<h3 id="21-analyze-and-document-the-project-structure">2.1: Analyze and document the project structure</h3>
+<p>Before modifying an application, developers first need to understand:
+- What the application does
+- How the frontend and backend communicate
+- Which files are responsible for specific features
+- How the project is structured</p>
+<p>This is where Bob becomes especially useful.</p>
+<p>Switch to <strong>Ask Mode</strong> and ask Bob:</p>
+<pre><code class="language-text">Please analyze this application and explain:
+1. The overall project structure
+2. Which files belong to the frontend and backend
+3. How the frontend communicates with the backend
+4. Diagram
+</code></pre>
+<p><img alt="7" src="../assets/lab2/images/7.png"></p>
+<p>Bob will analyze the existing codebase and help you quickly understand how the application works.</p>
+<p>This is particularly valuable when working with:
+- Large projects
+- Legacy applications
+- Applications created by other developers
+- Unfamiliar frameworks or architectures</p>
+<p><strong>✅ Checkpoint</strong>: You now understand the structure and responsibilities of the main application files.</p>
+<hr />
+<h2 id="step-3-identifying-required-file-changes">Step 3: Identifying required file changes</h2>
+<h3 id="31-ask-bob-which-files-need-to-change">3.1: Ask Bob which files need to change</h3>
+<p>One of Bob's strengths is helping developers identify where changes should happen before writing code.</p>
+<p>Still in <strong>Ask Mode</strong>, ask Bob:</p>
+<pre><code class="language-text">If I want to add a button that deletes all completed tasks, which files would I need to modify and how?
+</code></pre>
+<p><img alt="8" src="../assets/lab2/images/8.png"></p>
+<p>Bob will explain what files require changes to implement this feature. Notice that no code is being written yet — Bob is just helping you understand the implementation strategy first.</p>
+<p><img alt="9" src="../assets/lab2/images/9.png"></p>
+<p>This separation between planning and implementation is extremely important in real-world development workflows.</p>
+<p><strong>✅ Checkpoint</strong>: You understand which files are involved in the feature implementation.</p>
+<hr />
+<h2 id="step-4-try-the-literate-coding-mode">Step 4: Try the literate coding mode</h2>
+<p>Naturally, we could ask Bob to simply implement the new feature, specially because it already identified and planned the necessary changes.</p>
+<p>However, let's take this opportunity to try a very interesting and useful feature in Bob: the literate coding mode.</p>
+<h3 id="41-open-one-of-the-files-that-required-changes">4.1: Open one of the files that required changes</h3>
+<p>Open one of the files that Bob identified that required changes if we wanted to implement the new feature we suggested.</p>
+<p>In this case, we will open the Frontend/index.html.</p>
+<h3 id="42-activate-the-literate-coding-mode">4.2: Activate the literate coding mode</h3>
+<p>Click on the literate coding mode icon, with the target file open.</p>
+<p><img alt="10" src="../assets/lab2/images/10.png"></p>
+<h3 id="43-make-the-change-that-bob-suggested-for-that-file">4.3: Make the change that Bob suggested for that file</h3>
+<p>If Bob told you the exact line where changes need to be made, select it and write what you want to implement.</p>
+<p>If it didn't (like in this case), simply select a random line and ask Bob to implement what he suggested.</p>
+<p><img alt="11" src="../assets/lab2/images/11.png"></p>
+<p>Then Click on 'Generate'.</p>
+<p><img alt="12" src="../assets/lab2/images/12.png"></p>
+<h3 id="44-review-the-changes-and-accept-them">4.4: Review the changes and accept them</h3>
+<p><img alt="13" src="../assets/lab2/images/13.png"></p>
+<hr />
+<h2 id="step-5-finish-implementing-the-new-feature">Step 5: Finish implementing the new feature</h2>
+<h3 id="51-switch-to-agent-mode">5.1: Switch to Agent Mode</h3>
+<p>In order to finish implementing this new feature, let's switch to <strong>Agent Mode</strong>.</p>
+<p><img alt="14" src="../assets/lab2/images/14.png"></p>
+<p>Unlike Ask Mode, Agent Mode can:
+- Modify files
+- Create new code
+- Refactor existing logic
+- Execute commands
+- Implement features directly in the project</p>
+<hr />
+<h3 id="52-ask-bob-to-implement-the-feature">5.2: Ask Bob to implement the feature</h3>
+<p>Ask Bob:</p>
+<pre><code class="language-text">Finish implementing a new button that deletes all completed tasks.
+Modify all the necessary files.
+</code></pre>
+<p>Bob will typically:
+1. Analyze the existing codebase
+2. Create a task plan
+3. Identify the files that still need to be changed
+4. Propose code modifications</p>
+<p>This step demonstrates how Bob approaches multi-file changes in a structured way.</p>
+<hr />
+<h3 id="53-reviewing-bobs-proposed-changes">5.3: Reviewing Bob's proposed changes</h3>
+<p>Before modifying files, Bob may ask for approval depending on your settings.</p>
+<p>You will likely see:
+- Proposed file changes
+- Generated task lists
+- Code diffs
+- Approval buttons</p>
+<p>This approval flow is important because it keeps developers in control of the generated code.</p>
+<hr />
+<h3 id="54-apply-the-generated-changes">5.4: Apply the generated changes</h3>
+<p>Approve the generated changes and let Bob update the application files.</p>
+<p>Once completed, Bob should modify:
+- The frontend interface
+- The frontend JavaScript logic
+- The backend API endpoint
+- Any necessary styling</p>
+<p><strong>✅ Checkpoint</strong>: Bob successfully updated the application files.</p>
+<hr />
+<h2 id="step-6-testing-the-updated-application">Step 6: Testing the updated application</h2>
+<h3 id="61-run-the-application">6.1: Run the application</h3>
+<p>Ask Bob to help you run the application again:</p>
+<pre><code class="language-bash">How do I run the backend application?
+</code></pre>
+<h3 id="62-open-the-frontend">6.2: Open the frontend.</h3>
+<p><strong>For Windows Users</strong>:</p>
+<p>Open your application's frontend by right-clicking the <code>index.html</code> file and then selecting "Open with Live Server".</p>
+<p><img alt="15" src="../assets/lab2/images/15.png"></p>
+<p><img alt="16" src="../assets/lab2/images/16.png"></p>
+<p><strong>For macOS Users</strong>:</p>
+<p>Right-click the <code>index.html</code> file and select "Reveal in Finder"</p>
+<p><img alt="17" src="../assets/lab2/images/17.png"></p>
+<p>Then just open the file in your browser of choice.</p>
+<p><img alt="18" src="../assets/lab2/images/18.png"></p>
+<p><strong>✅ Checkpoint</strong>: Frontend loads and displays the User Interface.</p>
+<hr />
+<h3 id="63-test-the-new-feature">6.3: Test the new feature</h3>
+<p>Example test:
+1. Create several tasks
+2. Mark some tasks as completed
+3. Click the new "Delete Completed" button
+4. ✅ Completed tasks should be removed</p>
+<p><img alt="19" src="../assets/lab2/images/19.png"></p>
+<p>If the application does not work correctly, ask Bob to:
+- Analyze the issue
+- Identify the root cause
+- Suggest a fix
+- Apply the correction</p>
+<p>This mirrors how developers commonly use AI assistants during real debugging workflows.</p>
+<hr />
+<h2 id="step-7-generate-documentation">Step 7: Generate documentation</h2>
+<p>When working with software, it is important to keep the code well documented. Good documentation improves clarity, maintainability, and makes future development easier.</p>
+<p>To do this, you will create a custom Bob mode specialized in writing technical documentation.</p>
+<h3 id="71-open-the-mode-marketplace-in-bob">7.1: Open the Mode marketplace in Bob</h3>
+<p>Go to <strong>Settings</strong> and open the <strong>Modes</strong> tab.</p>
+<p><img alt="20" src="../assets/lab2/images/20.png"></p>
+<h3 id="72-start-creating-a-new-mode">7.2: Start creating a new mode</h3>
+<p>Click the <strong>+</strong> icon to create a new mode.</p>
+<p><img alt="21" src="../assets/lab2/images/21.png"></p>
+<h3 id="73-define-the-new-mode">7.3: Define the new mode</h3>
+<p>When prompted for the installation scope, you have two options:</p>
+<ul>
+<li>Select <strong>Global</strong> if you regularly work with documentation. The mode will be available across all workspaces and can be reused in future projects.</li>
+<li>Select <strong>Project</strong> if you only plan to use it for this lab. The mode will be available only in the current project.</li>
+</ul>
+<p>Fill in the mode details using the information below:</p>
+<p><img alt="22" src="../assets/lab2/images/22.png"></p>
+<p>Slug:</p>
+<pre><code class="language-text">documentation-writer
+</code></pre>
+<p>Name:</p>
+<pre><code class="language-text">✍️ Documentation Writer
+</code></pre>
+<p>Description:</p>
+<pre><code class="language-text">Produce high-quality documentation for software projects.
+</code></pre>
+<p>Scope: Global</p>
+<p>Role description:</p>
+<pre><code class="language-text">You are a technical writing professional focused on producing accurate and user-friendly documentation for software projects. Your core competencies include:
+- Writing precise and accessible technical content
+- Developing and updating README files, API references, and user manuals
+- Applying documentation standards and style guidelines
+- Analyzing code to document its behavior effectively
+- Structuring content in a clear and navigable format
+</code></pre>
+<p>When to use:</p>
+<pre><code class="language-text">Use this mode when you need to draft, revise, or enhance technical documentation. It is best suited for creating README files, API documentation, user guides, setup instructions, or any documentation that must be thorough, well-organized, and easy to follow.
+</code></pre>
+<p>Mode-specific custom instructions:</p>
+<pre><code class="language-text">Prioritize clarity, brevity, and consistency in your writing. Use Markdown to format content effectively, and ensure the documentation is logically structured and easy to maintain.
+</code></pre>
+<p>Available tools: Read files + Edit files + Execute commands</p>
+<h3 id="74-switch-to-the-documentation-writer-mode">7.4: Switch to the Documentation Writer mode</h3>
+<p>Make sure the newly created <strong>Documentation Writer</strong> mode is selected.</p>
+<p><img alt="23" src="../assets/lab2/images/23.png"></p>
+<h3 id="75-generate-the-documentation">7.5: Generate the documentation</h3>
+<p>Ask Bob:</p>
+<pre><code class="language-text">Generate documentation for my backend app. Do not create a new file; instead, add comments directly in the code where useful.
+</code></pre>
+<p><img alt="24" src="../assets/lab2/images/24.png"></p>
+<p>Bob will analyze the backend code and add documentation comments to the relevant file or files.</p>
+<p><img alt="25" src="../assets/lab2/images/25.png"></p>
+<p><strong>✅ Checkpoint:</strong> The Documentation Writer mode is created, selected, and used to generate documentation directly in the code.</p>
+<hr />
+<h2 id="step-8-explore-the-bob-findings-feature-optional">Step 8: Explore the Bob Findings feature (optional)</h2>
+<p>After Bob completes a review, any identified issues are displayed in the <strong>Bob Findings</strong> panel. This panel helps you quickly assess potential problems in your code and review Bob's suggested fixes. You can interact with each finding in several ways, including examining the issue in context and applying recommended changes directly from Bob. Because findings are generated based on the specific files and code in your project, the results may differ from the examples shown below, and in some cases, no findings may be reported.</p>
+<h3 id="81-open-bob-findings">8.1: Open Bob Findings</h3>
+<p>Select <strong>Bob Findings</strong> from the left-hand panel.</p>
+<p><img alt="26" src="../assets/lab2/images/26.png"></p>
+<p>Bob may display findings or improvement suggestions for specific files in your project.</p>
+<h3 id="82-scan-a-file-for-vulnerabilities">8.2: Scan a file for vulnerabilities</h3>
+<p>Select one of the findings. Bob has analyzed the selected file and displayed the detected vulnerabilities.</p>
+<p><img alt="27" src="../assets/lab2/images/27.png"></p>
+<h3 id="83-go-to-the-finding-location">8.3: Go to the finding location</h3>
+<p>Click <strong>Go to location</strong>. Bob will open the relevant file and take you to the exact line where the finding was detected.</p>
+<p><img alt="28" src="../assets/lab2/images/28.png"></p>
+<h3 id="84-fix-the-finding-with-bob">8.4: Fix the finding with Bob</h3>
+<p>Click <strong>Fix with Bob</strong>. Bob will start working on the file and show the suggested changes in the usual panel on the right.</p>
+<p><img alt="29" src="../assets/lab2/images/29.png"></p>
+<h3 id="85-review-the-changes">8.5: Review the changes</h3>
+<p>Review Bob's proposed changes carefully before accepting them.</p>
+<p><img alt="30" src="../assets/lab2/images/30.png"></p>
+<p><strong>✅ Checkpoint:</strong> You reviewed a Bob Finding, navigated to the affected code, and used Bob to propose a fix.</p>
+<h2 id="congratulations-youve-completed-lab-2">Congratulations 🎉 You've completed Lab 2!</h2>
+<p>You've successfully learned how to:
+- ✅ Understand an existing application using Bob
+- ✅ Analyze project structure and dependencies
+- ✅ Identify files involved in a feature implementation
+- ✅ Use Ask Mode for architecture understanding
+- ✅ Use Code Mode for feature implementation
+- ✅ Generate documentation</p>
+<ul>
+<li>✅ Review and approve generated code changes</li>
+</ul>
+<p>This workflow closely reflects how AI-assisted software development is increasingly used in real enterprise environments.</p>
+<hr />
+<h2 id="lab-quiz-unlock-the-next-lab">🎓 Lab Quiz — Unlock the Next Lab</h2>
+<div class="lab-quiz" id="quiz-lab2" data-unlocks="lab3">
+
+  <!-- Question 1 -->
+  <div class="quiz-question" data-correct="C">
+    <p><strong>Question 1:</strong> According to Lab 2's comparison table, what does Ask Mode do that Agent Mode does not?</p>
+    <label><input type="radio" name="q1-lab2" value="A"> A) Modifies and generates code</label><br>
+    <label><input type="radio" name="q1-lab2" value="B"> B) Implements features and executes changes</label><br>
+    <label><input type="radio" name="q1-lab2" value="C"> C) Understands and explains code, and helps with architecture analysis</label><br>
+    <label><input type="radio" name="q1-lab2" value="D"> D) Runs unit tests automatically</label>
+    <div class="quiz-feedback" hidden></div>
+  </div>
+
+  <!-- Question 2 -->
+  <div class="quiz-question" data-correct="C">
+    <p><strong>Question 2:</strong> When creating a new custom Bob mode in Lab 2, which two scope options are available?</p>
+    <label><input type="radio" name="q2-lab2" value="A"> A) Local and Remote</label><br>
+    <label><input type="radio" name="q2-lab2" value="B"> B) User and Admin</label><br>
+    <label><input type="radio" name="q2-lab2" value="C"> C) Global and Project</label><br>
+    <label><input type="radio" name="q2-lab2" value="D"> D) Personal and Shared</label>
+    <div class="quiz-feedback" hidden></div>
+  </div>
+
+  <!-- Question 3 -->
+  <div class="quiz-question" data-correct="C">
+    <p><strong>Question 3:</strong> What is the purpose of the Bob Findings panel described in Lab 2?</p>
+    <label><input type="radio" name="q3-lab2" value="A"> A) To display the project file tree</label><br>
+    <label><input type="radio" name="q3-lab2" value="B"> B) To switch between Bob modes</label><br>
+    <label><input type="radio" name="q3-lab2" value="C"> C) To show identified issues in your code and allow you to apply Bob's suggested fixes directly</label><br>
+    <label><input type="radio" name="q3-lab2" value="D"> D) To run and display unit test results</label>
+    <div class="quiz-feedback" hidden></div>
+  </div>
+
+  <button class="quiz-submit-btn" onclick="submitQuiz('lab2')">Submit Answers</button>
+  <div class="quiz-result" hidden></div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.top", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../javascripts/quiz.js"></script>
+      
+    
+  </body>
+</html>

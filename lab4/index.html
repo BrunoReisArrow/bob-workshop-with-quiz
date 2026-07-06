@@ -1,0 +1,1387 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Hands-on Labs for IBM Bob">
+      
+      
+      
+      
+        <link rel="prev" href="../lab3/">
+      
+      
+        <link rel="next" href="../lab5/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Lab 4 — Translate Code Python → JavaScript - IBM Bob Workshop</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="light-blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#lab-4-code-translation-python-to-javascript-with-bob" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="IBM Bob Workshop" class="md-header__button md-logo" aria-label="IBM Bob Workshop" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            IBM Bob Workshop
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Lab 4 — Translate Code Python → JavaScript
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="light-blue"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="light-blue"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../lab1/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Lab 1 — Generate a Full-Stack Application
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../lab2/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Lab 2 — Explain, Extend and Document
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../lab3/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Lab 3 — Search and Fix Vulnerabilities
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="./" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Lab 4 — Translate Code Python → JavaScript
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../lab5/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Lab 5 — Modernize Legacy Java Code
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="IBM Bob Workshop" class="md-nav__button md-logo" aria-label="IBM Bob Workshop" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    IBM Bob Workshop
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab 1 — Generate a Full-Stack Application
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab 2 — Explain, Extend and Document
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab 3 — Search and Fix Vulnerabilities
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab 4 — Translate Code Python → JavaScript
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab 4 — Translate Code Python → JavaScript
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Overview
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#before-starting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Before Starting
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-youll-translate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What You'll Translate
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-youll-learn" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What You'll Learn
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lab-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lab Structure
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-1-review-the-python-source" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 1: Review the Python source
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 1: Review the Python source">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-download-and-open-the-lab-folder-in-bob" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1: Download and open the lab folder in Bob
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-switch-to-ask-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2: Switch to Ask Mode
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-ask-bob-to-explain-the-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3: Ask Bob to explain the code
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#14-ask-about-translation-challenges" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.4: Ask about translation challenges
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-2-plan-the-translation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 2: Plan the translation
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 2: Plan the translation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-switch-to-plan-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1: Switch to Plan Mode
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-create-a-translation-mapping" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2: Create a translation mapping
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-3-implement-the-javascript-version" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 3: Implement the JavaScript version
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 3: Implement the JavaScript version">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-switch-to-agent-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1: Switch to Agent Mode
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-create-or-update-the-package-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2: Create or update the package configuration
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-translate-the-python-class" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3: Translate the Python class
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34-ask-bob-to-explain-the-translation-choices" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.4: Ask Bob to explain the translation choices
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-4-verify-and-compare-both-versions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 4: Verify and compare both versions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 4: Verify and compare both versions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-run-and-compare-the-two-versions-of-data_processor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1: Run and compare the two versions of data_processor
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#congratulations-youve-completed-lab-4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Congratulations 🎉 You've completed Lab 4!
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lab-quiz-unlock-the-next-lab" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🎓 Lab Quiz — Unlock the Next Lab
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab 5 — Modernize Legacy Java Code
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Overview
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#before-starting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Before Starting
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-youll-translate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What You'll Translate
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-youll-learn" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What You'll Learn
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lab-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lab Structure
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-1-review-the-python-source" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 1: Review the Python source
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 1: Review the Python source">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-download-and-open-the-lab-folder-in-bob" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1: Download and open the lab folder in Bob
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-switch-to-ask-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2: Switch to Ask Mode
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-ask-bob-to-explain-the-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3: Ask Bob to explain the code
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#14-ask-about-translation-challenges" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.4: Ask about translation challenges
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-2-plan-the-translation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 2: Plan the translation
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 2: Plan the translation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-switch-to-plan-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1: Switch to Plan Mode
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-create-a-translation-mapping" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2: Create a translation mapping
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-3-implement-the-javascript-version" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 3: Implement the JavaScript version
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 3: Implement the JavaScript version">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-switch-to-agent-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1: Switch to Agent Mode
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-create-or-update-the-package-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2: Create or update the package configuration
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-translate-the-python-class" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3: Translate the Python class
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34-ask-bob-to-explain-the-translation-choices" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.4: Ask Bob to explain the translation choices
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-4-verify-and-compare-both-versions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 4: Verify and compare both versions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 4: Verify and compare both versions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-run-and-compare-the-two-versions-of-data_processor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1: Run and compare the two versions of data_processor
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#congratulations-youve-completed-lab-4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Congratulations 🎉 You've completed Lab 4!
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lab-quiz-unlock-the-next-lab" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🎓 Lab Quiz — Unlock the Next Lab
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<div class="lab-lock-overlay" id="lock-lab4">
+  <div class="lock-content">
+    <span class="lock-icon">🔒</span>
+    <h2>This lab is locked</h2>
+    <p>Complete the quiz at the end of the previous lab to unlock this content.</p>
+    <button class="lock-back-btn" onclick="goBackFromLock()">← Go Back</button>
+  </div>
+</div>
+
+<h1 id="lab-4-code-translation-python-to-javascript-with-bob">Lab 4: Code Translation - Python to JavaScript with Bob</h1>
+<h2 id="overview">Overview</h2>
+<p>In this lab, you'll use Bob to translate a Python data-processing script into an equivalent JavaScript implementation while preserving functionality and applying language-specific best practices.</p>
+<p>This reflects a common real-world scenario where teams modernize utilities, port internal tools, or move logic between runtimes without rewriting everything manually.</p>
+<h2 id="before-starting">Before Starting</h2>
+<p>Make sure you have:
+- IBM Bob access
+- Python 3.8+
+- Node.js 14+
+- A terminal
+- A local workspace where Bob can create files and run commands</p>
+<p>Helpful but not required:
+- Basic familiarity with Python and JavaScript</p>
+<h2 id="what-youll-translate">What You'll Translate</h2>
+<p>You will translate the Python source file <code>source/data_processor.py</code> into a Node.js implementation.</p>
+<p>The Python script:
+- Reads CSV files
+- Performs statistical calculations
+- Exports results to JSON</p>
+<h2 id="what-youll-learn">What You'll Learn</h2>
+<p>By the end of this lab, you will:
+- ✅ Use Ask Mode to understand the source code
+- ✅ Use Plan Mode to design a translation strategy
+- ✅ Use Code Mode to implement the JavaScript version
+- ✅ Compare Python features with JavaScript equivalents
+- ✅ Validate that both versions produce the same outcome</p>
+<h2 id="lab-structure">Lab Structure</h2>
+<ul>
+<li><a href="#step-1-review-the-python-source">Review the Python source</a></li>
+<li><a href="#step-2-plan-the-translation">Plan the translation</a></li>
+<li><a href="#step-3-implement-the-javascript-version">Implement the JavaScript version</a></li>
+<li><a href="#step-4-verify-and-compare-both-versions">Verify and compare both versions</a></li>
+</ul>
+<hr />
+<h2 id="step-1-review-the-python-source">Step 1: Review the Python source</h2>
+<h3 id="11-download-and-open-the-lab-folder-in-bob">1.1: Download and open the lab folder in Bob</h3>
+<p>Download the lab files ZIP <a href="../assets/lab4/source.zip">here</a>. Extract it to a new local folder and open that extracted folder in IBM Bob before starting the exercise.</p>
+<p><img alt="1" src="../assets/lab4/images/1.png"></p>
+<p>Review the code structure and pay attention to:
+- Class-based design
+- Type hints
+- Context managers such as <code>with open(...)</code>
+- List comprehensions
+- Dictionary operations
+- CSV and JSON handling</p>
+<p><strong>✅ Checkpoint</strong>: You have reviewed the Python source file.</p>
+<h3 id="12-switch-to-ask-mode">1.2: Switch to Ask Mode</h3>
+<p>Change to <strong>Ask Mode</strong>.</p>
+<p><img alt="2" src="../assets/lab4/images/2.png"></p>
+<h3 id="13-ask-bob-to-explain-the-code">1.3: Ask Bob to explain the code</h3>
+<p>Ask Bob:</p>
+<pre><code class="language-text">Analyze source/data_processor.py and explain:
+1. The overall purpose of the script
+2. The main classes and functions
+3. Which Python-specific features are being used
+4. Which parts may need special handling in JavaScript
+</code></pre>
+<p><img alt="3" src="../assets/lab4/images/3.png"></p>
+<p>Bob should identify file Input/Output, list processing, JSON export, and the <code>DataProcessor</code> class design.</p>
+<p><strong>✅ Checkpoint</strong>: You understand the Python implementation before translating it.</p>
+<h3 id="14-ask-about-translation-challenges">1.4: Ask about translation challenges</h3>
+<p>Still in <strong>Ask Mode</strong>, ask Bob:</p>
+<pre><code class="language-text">What challenges should we expect when translating source/data_processor.py from Python to JavaScript?
+Consider syntax, libraries, async file handling, and type documentation.
+</code></pre>
+<p>Bob should highlight differences such as:
+- <code>with open(...)</code> versus Node.js file and stream APIs
+- <code>csv.DictReader</code> versus <code>csv-parser</code>
+- Type hints versus JSDoc
+- List comprehensions versus array methods</p>
+<p><strong>✅ Checkpoint</strong>: You understand the main translation challenges.</p>
+<hr />
+<h2 id="step-2-plan-the-translation">Step 2: Plan the translation</h2>
+<h3 id="21-switch-to-plan-mode">2.1: Switch to Plan Mode</h3>
+<p>Change to <strong>Plan Mode</strong>.</p>
+<h3 id="22-create-a-translation-mapping">2.2: Create a translation mapping</h3>
+<p>Ask Bob:</p>
+<pre><code class="language-text">Create a file with the translation plan for converting source/data_processor.py to JavaScript.
+Include:
+1. Python-to-JavaScript feature mapping
+2. Library equivalents
+3. Proposed file layout in solution/
+4. Any dependency recommendations
+5. Validation steps after implementation
+</code></pre>
+<p>Bob should produce a clear mapping before any code is written.</p>
+<p><strong>✅ Checkpoint</strong>: You have a concrete translation plan.</p>
+<hr />
+<h2 id="step-3-implement-the-javascript-version">Step 3: Implement the JavaScript version</h2>
+<h3 id="31-switch-to-agent-mode">3.1: Switch to Agent Mode</h3>
+<p>Change to <strong>Agent Mode</strong>.</p>
+<p><img alt="5" src="../assets/lab4/images/5.png"></p>
+<h3 id="32-create-or-update-the-package-configuration">3.2: Create or update the package configuration</h3>
+<p>Ask Bob:</p>
+<pre><code class="language-text">Create solution/package.json for the JavaScript translation.
+Use Node.js, set data_processor.js as the entry point, and add the dependencies needed for CSV parsing.
+</code></pre>
+<p><strong>✅ Checkpoint</strong>: The JavaScript project configuration is ready.</p>
+<h3 id="33-translate-the-python-class">3.3: Translate the Python class</h3>
+<p>Ask Bob:</p>
+<pre><code class="language-text">Translate source/data_processor.py into solution/data_processor.js.
+Include:
+1. An equivalent DataProcessor class
+2. Async file handling where appropriate
+3. JSDoc comments
+4. Error handling
+5. A runnable main entry point
+</code></pre>
+<p>Bob should generate the translated implementation in the <code>solution/</code> folder.</p>
+<p><img alt="6" src="../assets/lab4/images/6.png"></p>
+<p><strong>✅ Checkpoint</strong>: The JavaScript version has been created.</p>
+<h3 id="34-ask-bob-to-explain-the-translation-choices">3.4: Ask Bob to explain the translation choices</h3>
+<p>After the file is generated, switch back to <strong>Ask Mode</strong> and ask:</p>
+<pre><code class="language-text">Explain the key translation decisions in solution/data_processor.js.
+Focus on file I/O, array transformations, error handling, and how the Python main block was mapped to Node.js.
+</code></pre>
+<p>This is useful because translation is not only about syntax. It is also about choosing the right runtime patterns.</p>
+<p><strong>✅ Checkpoint</strong>: You understand the translated solution, not just the generated code.</p>
+<hr />
+<h2 id="step-4-verify-and-compare-both-versions">Step 4: Verify and compare both versions</h2>
+<h3 id="41-run-and-compare-the-two-versions-of-data_processor">4.1: Run and compare the two versions of data_processor</h3>
+<p>Switch back to Agent mode and ask Bob:</p>
+<pre><code class="language-text">Please run both versions of data_processor: python and javascript.
+Compare their outputs and confirm whether both implementations create equivalent CSV-processing and JSON-export behavior.
+</code></pre>
+<p>Review the generated output and result files together.</p>
+<p><img alt="7" src="../assets/lab4/images/7.png"></p>
+<p><strong>✅ Checkpoint</strong>: Both implementations behave consistently.</p>
+<hr />
+<h2 id="congratulations-youve-completed-lab-4">Congratulations 🎉 You've completed Lab 4!</h2>
+<p>You've successfully used Bob to:
+- ✅ Analyze Python code
+- ✅ Plan a language translation
+- ✅ Generate a JavaScript implementation
+- ✅ Compare behavior across runtimes</p>
+<hr />
+<h2 id="lab-quiz-unlock-the-next-lab">🎓 Lab Quiz — Unlock the Next Lab</h2>
+<div class="lab-quiz" id="quiz-lab4" data-unlocks="lab5">
+
+  <!-- Question 1 -->
+  <div class="quiz-question" data-correct="C">
+    <p><strong>Question 1:</strong> According to Lab 4, which Python feature does NOT have a direct equivalent in JavaScript and requires special handling?</p>
+    <label><input type="radio" name="q1-lab4" value="A"> A) For loops</label><br>
+    <label><input type="radio" name="q1-lab4" value="B"> B) String formatting</label><br>
+    <label><input type="radio" name="q1-lab4" value="C"> C) The <code>with open(...)</code> context manager</label><br>
+    <label><input type="radio" name="q1-lab4" value="D"> D) Integer arithmetic</label>
+    <div class="quiz-feedback" hidden></div>
+  </div>
+
+  <!-- Question 2 -->
+  <div class="quiz-question" data-correct="C">
+    <p><strong>Question 2:</strong> In Lab 4, what does Bob produce during the Plan Mode step before any code is written?</p>
+    <label><input type="radio" name="q2-lab4" value="A"> A) The complete JavaScript file</label><br>
+    <label><input type="radio" name="q2-lab4" value="B"> B) A set of unit tests for the Python script</label><br>
+    <label><input type="radio" name="q2-lab4" value="C"> C) A Python-to-JavaScript feature mapping, library equivalents, proposed file layout, dependency recommendations, and validation steps</label><br>
+    <label><input type="radio" name="q2-lab4" value="D"> D) A performance benchmark comparing both languages</label>
+    <div class="quiz-feedback" hidden></div>
+  </div>
+
+  <!-- Question 3 -->
+  <div class="quiz-question" data-correct="C">
+    <p><strong>Question 3:</strong> What does Lab 4's final step ask you to verify about the Python and JavaScript versions of <code>data_processor</code>?</p>
+    <label><input type="radio" name="q3-lab4" value="A"> A) That the JavaScript version runs faster than the Python version</label><br>
+    <label><input type="radio" name="q3-lab4" value="B"> B) That both files have the same number of lines of code</label><br>
+    <label><input type="radio" name="q3-lab4" value="C"> C) That both implementations produce equivalent CSV-processing and JSON-export behavior</label><br>
+    <label><input type="radio" name="q3-lab4" value="D"> D) That both versions pass the same set of unit tests</label>
+    <div class="quiz-feedback" hidden></div>
+  </div>
+
+  <button class="quiz-submit-btn" onclick="submitQuiz('lab4')">Submit Answers</button>
+  <div class="quiz-result" hidden></div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.top", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../javascripts/quiz.js"></script>
+      
+    
+  </body>
+</html>

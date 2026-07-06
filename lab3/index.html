@@ -1,0 +1,1603 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Hands-on Labs for IBM Bob">
+      
+      
+      
+      
+        <link rel="prev" href="../lab2/">
+      
+      
+        <link rel="next" href="../lab4/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Lab 3 — Search and Fix Vulnerabilities - IBM Bob Workshop</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="light-blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#lab-3-security-analysis-and-code-fixes-with-bob" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="IBM Bob Workshop" class="md-header__button md-logo" aria-label="IBM Bob Workshop" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            IBM Bob Workshop
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Lab 3 — Search and Fix Vulnerabilities
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="light-blue"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="light-blue"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../lab1/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Lab 1 — Generate a Full-Stack Application
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../lab2/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Lab 2 — Explain, Extend and Document
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="./" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Lab 3 — Search and Fix Vulnerabilities
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../lab4/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Lab 4 — Translate Code Python → JavaScript
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../lab5/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Lab 5 — Modernize Legacy Java Code
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="IBM Bob Workshop" class="md-nav__button md-logo" aria-label="IBM Bob Workshop" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    IBM Bob Workshop
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab 1 — Generate a Full-Stack Application
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab 2 — Explain, Extend and Document
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab 3 — Search and Fix Vulnerabilities
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab 3 — Search and Fix Vulnerabilities
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Overview
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#before-starting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Before Starting
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-youll-learn" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What You'll Learn
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lab-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lab Structure
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-1-open-the-vulnerable-application" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 1: Open the vulnerable application
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 1: Open the vulnerable application">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-download-and-open-the-lab-folder-in-bob" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1: Download and open the lab folder in Bob
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-review-the-files-you-will-analyze" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2: Review the files you will analyze
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-2-explore-the-codebase-with-ask-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 2: Explore the codebase with Ask Mode
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 2: Explore the codebase with Ask Mode">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-switch-to-ask-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1: Switch to Ask Mode
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-ask-bob-for-a-high-level-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2: Ask Bob for a high-level analysis
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-inspect-the-sql-injection-issue" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3: Inspect the SQL injection issue
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24-inspect-the-secrets-handling" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.4: Inspect the secrets handling
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-3-create-a-remediation-plan-with-plan-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 3: Create a remediation plan with Plan Mode
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 3: Create a remediation plan with Plan Mode">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-switch-to-plan-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1: Switch to Plan Mode
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-request-a-security-remediation-plan" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2: Request a security remediation plan
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-4-review-the-key-vulnerabilities" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 4: Review the key vulnerabilities
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 4: Review the key vulnerabilities">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-sql-injection-in-the-search-endpoint" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1: SQL injection in the search endpoint
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-hardcoded-secrets-in-source-control" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2: Hardcoded secrets in source control
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-weak-validation-and-error-handling" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3: Weak validation and error handling
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-5-implement-fixes-with-agent-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 5: Implement fixes with Agent Mode
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 5: Implement fixes with Agent Mode">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-switch-to-agent-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1: Switch to Agent Mode
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-fix-the-sql-injection-issue" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2: Fix the SQL injection issue
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53-fix-secret-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3: Fix secret management
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#54-improve-validation-and-error-responses" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.4: Improve validation and error responses
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-6-test-and-validate-the-result" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 6: Test and validate the result
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 6: Test and validate the result">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-ask-bob-to-validate-the-application" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1: Ask Bob to validate the application
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-review-the-final-state" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2: Review the final state
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#congratulations-youve-completed-lab-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Congratulations 🎉 You've completed Lab 3!
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lab-quiz-unlock-the-next-lab" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🎓 Lab Quiz — Unlock the Next Lab
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab 4 — Translate Code Python → JavaScript
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab 5 — Modernize Legacy Java Code
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Overview
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#before-starting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Before Starting
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-youll-learn" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What You'll Learn
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lab-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lab Structure
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-1-open-the-vulnerable-application" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 1: Open the vulnerable application
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 1: Open the vulnerable application">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-download-and-open-the-lab-folder-in-bob" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1: Download and open the lab folder in Bob
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-review-the-files-you-will-analyze" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2: Review the files you will analyze
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-2-explore-the-codebase-with-ask-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 2: Explore the codebase with Ask Mode
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 2: Explore the codebase with Ask Mode">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-switch-to-ask-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1: Switch to Ask Mode
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-ask-bob-for-a-high-level-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2: Ask Bob for a high-level analysis
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-inspect-the-sql-injection-issue" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3: Inspect the SQL injection issue
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24-inspect-the-secrets-handling" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.4: Inspect the secrets handling
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-3-create-a-remediation-plan-with-plan-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 3: Create a remediation plan with Plan Mode
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 3: Create a remediation plan with Plan Mode">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-switch-to-plan-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1: Switch to Plan Mode
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-request-a-security-remediation-plan" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2: Request a security remediation plan
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-4-review-the-key-vulnerabilities" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 4: Review the key vulnerabilities
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 4: Review the key vulnerabilities">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-sql-injection-in-the-search-endpoint" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1: SQL injection in the search endpoint
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-hardcoded-secrets-in-source-control" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2: Hardcoded secrets in source control
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-weak-validation-and-error-handling" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3: Weak validation and error handling
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-5-implement-fixes-with-agent-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 5: Implement fixes with Agent Mode
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 5: Implement fixes with Agent Mode">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-switch-to-agent-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1: Switch to Agent Mode
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-fix-the-sql-injection-issue" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2: Fix the SQL injection issue
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53-fix-secret-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3: Fix secret management
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#54-improve-validation-and-error-responses" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.4: Improve validation and error responses
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-6-test-and-validate-the-result" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 6: Test and validate the result
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 6: Test and validate the result">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-ask-bob-to-validate-the-application" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1: Ask Bob to validate the application
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-review-the-final-state" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2: Review the final state
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#congratulations-youve-completed-lab-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Congratulations 🎉 You've completed Lab 3!
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lab-quiz-unlock-the-next-lab" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🎓 Lab Quiz — Unlock the Next Lab
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<div class="lab-lock-overlay" id="lock-lab3">
+  <div class="lock-content">
+    <span class="lock-icon">🔒</span>
+    <h2>This lab is locked</h2>
+    <p>Complete the quiz at the end of the previous lab to unlock this content.</p>
+    <button class="lock-back-btn" onclick="goBackFromLock()">← Go Back</button>
+  </div>
+</div>
+
+<h1 id="lab-3-security-analysis-and-code-fixes-with-bob">Lab 3: Security Analysis and Code Fixes with Bob</h1>
+<h2 id="overview">Overview</h2>
+<p>In this lab, you'll use Bob to inspect an intentionally vulnerable application, identify the highest-risk issues, and guide a remediation workflow from analysis to code fixes.</p>
+<p>This lab is intentionally closer to a real inherited codebase than to a clean greenfield project. Part of the exercise is using Bob to understand what is there, what is missing, and what should be fixed first.</p>
+<blockquote>
+<p>🔍 <strong>Bob Findings in Practice</strong><br />
+This lab is a good fit for Bob Findings because the sample includes multiple classes of issues across application code, configuration, and project structure.</p>
+</blockquote>
+<h2 id="before-starting">Before Starting</h2>
+<p>Make sure you have:
+- IBM Bob access
+- Python 3.8+
+- A terminal
+- A local workspace where Bob can create files and run commands</p>
+<p>Helpful but not required:
+- Basic familiarity with Flask and REST APIs</p>
+<h2 id="what-youll-learn">What You'll Learn</h2>
+<p>By the end of this lab, you will:
+- ✅ Use Ask Mode to inspect an unfamiliar and imperfect codebase
+- ✅ Use Plan Mode to prioritize security remediation work
+- ✅ Identify SQL injection, hardcoded secrets, and weak error handling
+- ✅ Use Code Mode to apply secure fixes
+- ✅ Validate the remediated application flow</p>
+<h2 id="lab-structure">Lab Structure</h2>
+<ul>
+<li><a href="#step-1-open-the-vulnerable-application">Open the vulnerable application</a></li>
+<li><a href="#step-2-explore-the-codebase-with-ask-mode">Explore the codebase with Ask Mode</a></li>
+<li><a href="#step-3-create-a-remediation-plan-with-plan-mode">Create a remediation plan with Plan Mode</a></li>
+<li><a href="#step-4-review-the-key-vulnerabilities">Review the key vulnerabilities</a></li>
+<li><a href="#step-5-implement-fixes-with-agent-mode">Implement fixes with Code Mode</a></li>
+<li><a href="#step-6-test-and-validate-the-result">Test and validate the result</a></li>
+</ul>
+<hr />
+<h2 id="step-1-open-the-vulnerable-application">Step 1: Open the vulnerable application</h2>
+<h3 id="11-download-and-open-the-lab-folder-in-bob">1.1: Download and open the lab folder in Bob</h3>
+<p>Download <a href="../assets/lab3/vulnerable-app.zip"><code>vulnerable-app.zip</code></a>, extract it locally, and open the extracted <code>vulnerable-app/</code> folder in IBM Bob.</p>
+<p><img alt="1" src="../assets/lab3/images/1.png"></p>
+<p><strong>✅ Checkpoint</strong>: The vulnerable application is open in your Bob workspace.</p>
+<h3 id="12-review-the-files-you-will-analyze">1.2: Review the files you will analyze</h3>
+<p>The main files for this lab are:
+- <code>vulnerable-app/database.py</code> for the Flask API and several backend vulnerabilities
+- <code>vulnerable-app/models.py</code> for hardcoded secrets
+- <code>vulnerable-app/config.py</code> for an environment-template style configuration file
+- <code>vulnerable-app/app.js</code> for the data model definition</p>
+<blockquote>
+<p><strong>Note</strong><br />
+The naming inside this sample is inconsistent on purpose. Bob should help you identify these mismatches quickly.</p>
+</blockquote>
+<p><strong>✅ Checkpoint</strong>: You know which files to keep in context during the lab.</p>
+<hr />
+<h2 id="step-2-explore-the-codebase-with-ask-mode">Step 2: Explore the codebase with Ask Mode</h2>
+<h3 id="21-switch-to-ask-mode">2.1: Switch to Ask Mode</h3>
+<p>Change to <strong>Ask Mode</strong>.</p>
+<p><img alt="2" src="../assets/lab3/images/2.png"></p>
+<p>Ask Mode is useful when you want Bob to explain the current state of the codebase before making changes.</p>
+<h3 id="22-ask-bob-for-a-high-level-analysis">2.2: Ask Bob for a high-level analysis</h3>
+<p>Ask Bob:</p>
+<pre><code class="language-text">Please analyze this application  and explain:
+1. What files are present and what role each file plays
+2. Which parts of the application are backend, configuration, and data model
+3. What looks risky or inconsistent in the current project structure
+4. Which issues should be treated as security-relevant versus organizational
+</code></pre>
+<p><img alt="3" src="../assets/lab3/images/3.png"></p>
+<p>Bob should quickly identify that this sample has both security problems and structural inconsistencies.</p>
+<p><img alt="4" src="../assets/lab3/images/4.png"></p>
+<p><strong>✅ Checkpoint</strong>: You understand the current codebase before attempting fixes.</p>
+<h3 id="23-inspect-the-sql-injection-issue">2.3: Inspect the SQL injection issue</h3>
+<p>Ask Bob:</p>
+<pre><code class="language-text">Explain the search_todos() function in database.py.
+Why is it vulnerable, and how would you rewrite it safely?
+</code></pre>
+<p><img alt="5" src="../assets/lab3/images/5.png"></p>
+<p>Bob should identify the raw SQL string formatting and recommend parameterized queries.</p>
+<p><strong>✅ Checkpoint</strong>: You understand the most critical backend vulnerability.</p>
+<h3 id="24-inspect-the-secrets-handling">2.4: Inspect the secrets handling</h3>
+<p>Ask Bob:</p>
+<pre><code class="language-text">Review models.py and config.py.
+Which values are sensitive, and what should be moved to environment variables or example files?
+</code></pre>
+<p>Bob should call out the hardcoded credentials and the need to separate real secrets from templates.</p>
+<p><strong>✅ Checkpoint</strong>: You understand the configuration and secret-management problems.</p>
+<hr />
+<h2 id="step-3-create-a-remediation-plan-with-plan-mode">Step 3: Create a remediation plan with Plan Mode</h2>
+<h3 id="31-switch-to-plan-mode">3.1: Switch to Plan Mode</h3>
+<p>Change to <strong>Plan Mode</strong>.</p>
+<p><img alt="6" src="../assets/lab3/images/6.png"></p>
+<p>Plan Mode is useful here because you are not fixing a single bug. You are prioritizing a group of related security and project hygiene issues.</p>
+<h3 id="32-request-a-security-remediation-plan">3.2: Request a security remediation plan</h3>
+<p>Ask Bob:</p>
+<pre><code class="language-text">Analyze the application and create a prioritized remediation plan.
+Include:
+1. Security issues by severity
+2. Structural or naming issues that make maintenance harder
+3. Files that need to be updated
+4. A recommended implementation order
+5. A validation strategy after the fixes
+</code></pre>
+<p>Bob should produce a ranked plan. It may then ask to switch to code mode in order to start working on solutions. For now, we can decline that and focus on first reviewing and commenting the plan.</p>
+<p><img alt="7" src="../assets/lab3/images/7.png"></p>
+<p><strong>✅ Checkpoint</strong>: You have a clear, prioritized remediation plan.</p>
+<hr />
+<h2 id="step-4-review-the-key-vulnerabilities">Step 4: Review the key vulnerabilities</h2>
+<h3 id="41-sql-injection-in-the-search-endpoint">4.1: SQL injection in the search endpoint</h3>
+<p>The highest-risk issue is in <code>database.py</code>:</p>
+<pre><code class="language-python">sql = f&quot;SELECT * FROM todos WHERE title LIKE '%{query}%'&quot;
+result = db.session.execute(sql)
+</code></pre>
+<p>This is dangerous because user input is inserted directly into the SQL string.</p>
+<h3 id="42-hardcoded-secrets-in-source-control">4.2: Hardcoded secrets in source control</h3>
+<p>The current values in <code>models.py</code> include credentials and application secrets that should never live in source code.</p>
+<p>Typical fixes include:
+- Moving secrets to environment variables
+- Creating a <code>.env.example</code> file with placeholders only
+- Loading configuration safely at runtime</p>
+<h3 id="43-weak-validation-and-error-handling">4.3: Weak validation and error handling</h3>
+<p><code>database.py</code> also exposes internal errors directly to clients and accepts request payloads with little or no validation.</p>
+<p>That creates risk even when the issue is not a classic injection vulnerability.</p>
+<p><strong>✅ Checkpoint</strong>: You understand what you are fixing and why it matters.</p>
+<hr />
+<h2 id="step-5-implement-fixes-with-agent-mode">Step 5: Implement fixes with Agent Mode</h2>
+<h3 id="51-switch-to-agent-mode">5.1: Switch to Agent Mode</h3>
+<p>Change to <strong>Agent Mode</strong>.</p>
+<p><img alt="8" src="../assets/lab3/images/8.png"></p>
+<p>Agent Mode can now use your analysis and remediation plan to modify the project.</p>
+<h3 id="52-fix-the-sql-injection-issue">5.2: Fix the SQL injection issue</h3>
+<p>Ask Bob:</p>
+<pre><code class="language-text">Fix the SQL injection vulnerability in database.py.
+Use parameterized SQLAlchemy queries and keep the endpoint behavior the same.
+</code></pre>
+<p><img alt="9" src="../assets/lab3/images/9.png"></p>
+<p><strong>✅ Checkpoint</strong>: The search endpoint no longer interpolates raw user input into SQL.</p>
+<h3 id="53-fix-secret-management">5.3: Fix secret management</h3>
+<p>Ask Bob:</p>
+<pre><code class="language-text">Refactor secret handling in the application.
+1. Remove hardcoded secrets from models.py
+2. Create or update a .env.example file with placeholders
+3. Load secrets from environment variables
+4. Keep the sample easy to run locally
+</code></pre>
+<p><strong>✅ Checkpoint</strong>: Sensitive configuration is no longer stored directly in source code.</p>
+<h3 id="54-improve-validation-and-error-responses">5.4: Improve validation and error responses</h3>
+<p>Ask Bob:</p>
+<pre><code class="language-text">Improve request validation and error handling in database.py.
+Do not expose internal stack traces or raw exception details to API clients.
+</code></pre>
+<p><strong>✅ Checkpoint</strong>: The API now validates input and returns safer error responses.</p>
+<hr />
+<h2 id="step-6-test-and-validate-the-result">Step 6: Test and validate the result</h2>
+<h3 id="61-ask-bob-to-validate-the-application">6.1: Ask Bob to validate the application</h3>
+<p>Ask Bob:</p>
+<pre><code class="language-text">Please verify that after the fixes:
+1. The API still starts
+2. The search endpoint works
+3. Invalid input is handled safely
+4. Secrets are no longer exposed in code or responses
+</code></pre>
+<p>Bob may run commands, create test files, inspect outputs, and make a final correction pass if needed.</p>
+<h3 id="62-review-the-final-state">6.2: Review the final state</h3>
+<p>Before finishing, confirm that:
+- The most critical issues were fixed first
+- The project is easier to understand than when you started
+- The validation strategy matches the implemented changes</p>
+<p><strong>✅ Checkpoint</strong>: You have completed a full security-analysis and remediation workflow with Bob.</p>
+<hr />
+<h2 id="congratulations-youve-completed-lab-3">Congratulations 🎉 You've completed Lab 3!</h2>
+<p>You've successfully used Bob to:
+- ✅ Analyze a vulnerable application
+- ✅ Prioritize issues by severity
+- ✅ Apply safer implementation patterns
+- ✅ Improve both security and maintainability</p>
+<hr />
+<h2 id="lab-quiz-unlock-the-next-lab">🎓 Lab Quiz — Unlock the Next Lab</h2>
+<div class="lab-quiz" id="quiz-lab3" data-unlocks="lab4">
+
+  <!-- Question 1 -->
+  <div class="quiz-question" data-correct="C">
+    <p><strong>Question 1:</strong> Lab 3 highlights the following code as the highest-risk vulnerability. Why is it dangerous?</p>
+    <pre><code>sql = f"SELECT * FROM todos WHERE title LIKE '%{query}%'"
+result = db.session.execute(sql)</code></pre>
+    <label><input type="radio" name="q1-lab3" value="A"> A) It uses the wrong SQL keyword (LIKE instead of =)</label><br>
+    <label><input type="radio" name="q1-lab3" value="B"> B) It runs two queries instead of one</label><br>
+    <label><input type="radio" name="q1-lab3" value="C"> C) User input is inserted directly into the SQL string, allowing an attacker to inject arbitrary SQL commands</label><br>
+    <label><input type="radio" name="q1-lab3" value="D"> D) It does not return all columns from the table</label>
+    <div class="quiz-feedback" hidden></div>
+  </div>
+
+  <!-- Question 2 -->
+  <div class="quiz-question" data-correct="C">
+    <p><strong>Question 2:</strong> According to Lab 3, which of the following is the correct approach for handling sensitive credentials?</p>
+    <label><input type="radio" name="q2-lab3" value="A"> A) Store them directly in models.py for easy access</label><br>
+    <label><input type="radio" name="q2-lab3" value="B"> B) Hard-code them in config.py and commit the file to source control</label><br>
+    <label><input type="radio" name="q2-lab3" value="C"> C) Move them to environment variables, create a .env.example with placeholders, and load them safely at runtime</label><br>
+    <label><input type="radio" name="q2-lab3" value="D"> D) Encrypt them inside the source code file</label>
+    <div class="quiz-feedback" hidden></div>
+  </div>
+
+  <!-- Question 3 -->
+  <div class="quiz-question" data-correct="C">
+    <p><strong>Question 3:</strong> Why does Lab 3 use Plan Mode before switching to Agent Mode to fix the vulnerabilities?</p>
+    <label><input type="radio" name="q3-lab3" value="A"> A) Plan Mode can automatically fix SQL injection issues</label><br>
+    <label><input type="radio" name="q3-lab3" value="B"> B) Agent Mode is not available for security tasks</label><br>
+    <label><input type="radio" name="q3-lab3" value="C"> C) Because you are prioritizing a group of related security and project hygiene issues, not fixing a single bug</label><br>
+    <label><input type="radio" name="q3-lab3" value="D"> D) Plan Mode generates a test suite for the fixed code</label>
+    <div class="quiz-feedback" hidden></div>
+  </div>
+
+  <button class="quiz-submit-btn" onclick="submitQuiz('lab3')">Submit Answers</button>
+  <div class="quiz-result" hidden></div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.top", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../javascripts/quiz.js"></script>
+      
+    
+  </body>
+</html>

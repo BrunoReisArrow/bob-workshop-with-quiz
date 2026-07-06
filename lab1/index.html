@@ -1,0 +1,1636 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Hands-on Labs for IBM Bob">
+      
+      
+      
+      
+        <link rel="prev" href="..">
+      
+      
+        <link rel="next" href="../lab2/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Lab 1 — Generate a Full-Stack Application - IBM Bob Workshop</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="light-blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#lab-1-building-a-to-do-application-with-bob" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="IBM Bob Workshop" class="md-header__button md-logo" aria-label="IBM Bob Workshop" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            IBM Bob Workshop
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Lab 1 — Generate a Full-Stack Application
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="light-blue"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="light-blue"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="./" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Lab 1 — Generate a Full-Stack Application
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../lab2/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Lab 2 — Explain, Extend and Document
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../lab3/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Lab 3 — Search and Fix Vulnerabilities
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../lab4/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Lab 4 — Translate Code Python → JavaScript
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../lab5/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Lab 5 — Modernize Legacy Java Code
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="IBM Bob Workshop" class="md-nav__button md-logo" aria-label="IBM Bob Workshop" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    IBM Bob Workshop
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab 1 — Generate a Full-Stack Application
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab 1 — Generate a Full-Stack Application
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Overview
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#before-starting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Before Starting
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-youll-build" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What You'll Build
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lab-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lab Structure
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-1-set-up-your-project" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 1: Set up your project
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 1: Set up your project">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-create-and-open-the-project-folder" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1: Create and open the project folder
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-2-introduction-to-bob-modes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 2: Introduction to Bob Modes
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 2: Introduction to Bob Modes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-understanding-bob-modes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1: Understanding Bob Modes
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2.1: Understanding Bob Modes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#agent-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🤖 Agent Mode
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#plan-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🎯 Plan Mode
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ask-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ❓ Ask Mode
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-plan-your-project" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2: Plan your project
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-3-backend-development" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 3: Backend development
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 3: Backend development">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-switch-to-agent-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1: Switch to Agent Mode
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-create-the-backend-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2: Create the backend structure
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-implement-rest-api-endpoints" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3: Implement REST API Endpoints
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34-review-generated-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.4 Review Generated Code
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#35-create-unit-test-cases-and-run-them" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.5: Create Unit Test Cases and run them
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#36-run-the-backend" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.6: Run the Backend
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-4-frontend-development" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 4: Frontend Development
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 4: Frontend Development">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-create-frontend-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1: Create Frontend Structure
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-understanding-literate-coding" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2: Understanding Literate Coding
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-review-frontend-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3 Review Frontend Code
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#44-open-the-frontend" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.4: Open the frontend
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-5-test-your-application" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 5: Test your application
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-6-compare-your-application-with-the-other-participants" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 6: Compare your application with the other participants
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab 2 — Explain, Extend and Document
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab 3 — Search and Fix Vulnerabilities
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab 4 — Translate Code Python → JavaScript
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab 5 — Modernize Legacy Java Code
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Overview
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#before-starting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Before Starting
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-youll-build" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What You'll Build
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lab-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lab Structure
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-1-set-up-your-project" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 1: Set up your project
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 1: Set up your project">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-create-and-open-the-project-folder" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1: Create and open the project folder
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-2-introduction-to-bob-modes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 2: Introduction to Bob Modes
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 2: Introduction to Bob Modes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-understanding-bob-modes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1: Understanding Bob Modes
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2.1: Understanding Bob Modes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#agent-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🤖 Agent Mode
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#plan-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🎯 Plan Mode
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ask-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ❓ Ask Mode
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-plan-your-project" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2: Plan your project
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-3-backend-development" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 3: Backend development
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 3: Backend development">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-switch-to-agent-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1: Switch to Agent Mode
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-create-the-backend-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2: Create the backend structure
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-implement-rest-api-endpoints" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3: Implement REST API Endpoints
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34-review-generated-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.4 Review Generated Code
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#35-create-unit-test-cases-and-run-them" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.5: Create Unit Test Cases and run them
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#36-run-the-backend" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.6: Run the Backend
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-4-frontend-development" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 4: Frontend Development
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 4: Frontend Development">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-create-frontend-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1: Create Frontend Structure
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-understanding-literate-coding" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2: Understanding Literate Coding
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-review-frontend-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3 Review Frontend Code
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#44-open-the-frontend" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.4: Open the frontend
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-5-test-your-application" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 5: Test your application
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-6-compare-your-application-with-the-other-participants" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 6: Compare your application with the other participants
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="lab-1-building-a-to-do-application-with-bob">Lab 1: Building a To Do application with Bob</h1>
+<h2 id="overview">Overview</h2>
+<p>In this lab, you'll learn to use Bob's AI-powered features to build a complete full-stack To Do application from scratch. You'll experience Bob's different modes, auto-approvals, and code generation.</p>
+<h2 id="before-starting">Before Starting</h2>
+<p>Make sure you have:
+- IBM Bob access
+- Python 3.8+
+- Node.js 14+
+- A terminal
+- A local workspace where Bob can create files and run commands</p>
+<h2 id="what-youll-build">What You'll Build</h2>
+<p>A full-stack To Do application with:
+- <strong>Backend</strong>: Python Flask REST API with SQLite database
+- <strong>Frontend</strong>: Modern JavaScript single-page application
+- <strong>Features</strong>: Create, read, update, and delete To Dos</p>
+<h2 id="lab-structure">Lab Structure</h2>
+<ul>
+<li><a href="#step-1-set-up-your-project">Set up your project</a></li>
+<li><a href="#step-2-introduction-to-bob-modes">Introduction to Bob Modes</a></li>
+<li><a href="#step-3-backend-development">Backend Development</a></li>
+<li><a href="#step-4-frontend-development">Frontend Development</a></li>
+<li><a href="#step-5-test-your-application">Testing &amp; Verification</a></li>
+</ul>
+<hr />
+<h2 id="step-1-set-up-your-project">Step 1: Set up your project</h2>
+<h3 id="11-create-and-open-the-project-folder">1.1: Create and open the project folder</h3>
+<p>Create a new folder on your computer:</p>
+<pre><code class="language-text">bob-lab1
+</code></pre>
+<p>Open this folder in IBM Bob.</p>
+<p><img alt="1" src="../assets/lab1/images/1.png"></p>
+<p><strong>✅ Checkpoint</strong>: Your workspace is ready to start working.</p>
+<h2 id="step-2-introduction-to-bob-modes">Step 2: Introduction to Bob Modes</h2>
+<h3 id="21-understanding-bob-modes">2.1: Understanding Bob Modes</h3>
+<p>Bob has three built-in modes, each optimized for a different type of task. The built-in modes you'll use in this lab are:</p>
+<h4 id="agent-mode">🤖 Agent Mode</h4>
+<p><strong>When to use</strong>: Writing, modifying, refactoring, or improving code</p>
+<ul>
+<li>Implement features</li>
+<li>Create new files</li>
+<li>Modify existing code</li>
+<li>Fix bugs</li>
+<li>Refactor code</li>
+<li>Run tools and tests as part of development work</li>
+</ul>
+<h4 id="plan-mode">🎯 Plan Mode</h4>
+<p><strong>When to use</strong>: Planning, designing, or strategizing before implementation</p>
+<ul>
+<li>Analyze requirements</li>
+<li>Research technical approaches</li>
+<li>Design project structures</li>
+<li>Plan API endpoints</li>
+<li>Plan database schemas</li>
+<li>Make architectural decisions</li>
+<li>Break complex tasks into clear implementation steps</li>
+</ul>
+<h4 id="ask-mode">❓ Ask Mode</h4>
+<p><strong>When to use</strong>: Learning, understanding, or getting technical help</p>
+<ul>
+<li>Explain code concepts</li>
+<li>Analyze existing code</li>
+<li>Get documentation-style answers</li>
+<li>Understand errors</li>
+<li>Learn best practices</li>
+<li>Ask technical questions without changing code</li>
+</ul>
+<blockquote>
+<p><strong>🎯 Bob Differentiator: <a href="https://bob.ibm.com/docs/ide/configuration/custom-modes">Customizable Modes</a></strong></p>
+</blockquote>
+<p>Bob's mode system is one of its key differentiators. Bob allows you to create custom modes tailored to your team's specific workflows.</p>
+<h3 id="22-plan-your-project">2.2: Plan your project</h3>
+<p>Switch to <strong>Plan Mode</strong> and ask Bob:</p>
+<pre><code>I want to create a To Do application with a Python Flask backend and JavaScript frontend.
+Please help me plan:
+1. Project directory structure
+2. API endpoints needed
+3. Database schema
+4. Technology stack recommendations
+</code></pre>
+<p><img alt="2" src="../assets/lab1/images/2.png"></p>
+<p><img alt="3" src="../assets/lab1/images/3.png"></p>
+<p><strong>Bob's Interactive Approach:</strong></p>
+<p>Before providing a plan, Bob will ask clarifying questions to understand your requirements better. This is a key differentiator - Bob lets you drive the process while making helpful suggestions.</p>
+<p>Bob might ask:
+- "How complex should the application be?"
+- "Which database would you prefer (SQLite, PostgreSQL, MySQL)?"
+- "Do you need user authentication?"
+- "Should we include additional features like categories or priorities?"</p>
+<p><strong>For this lab, respond with basic requirements:</strong>
+- Simple/basic complexity
+- SQLite database (no installation needed)
+- No user authentication
+- Basic CRUD operations only</p>
+<p><img alt="4" src="../assets/lab1/images/4.png"></p>
+<p>This collaborative approach ensures Bob will build exactly what you need, and will not assume what you want.</p>
+<p><strong>✅ Checkpoint</strong>: Bob provided you with a comprehensive plan that matches your requests.</p>
+<hr />
+<h2 id="step-3-backend-development">Step 3: Backend development</h2>
+<p>Now let's build the backend for your application using Bob's Agent mode.</p>
+<h3 id="31-switch-to-agent-mode">3.1: Switch to Agent Mode</h3>
+<p>Change from Plan to <strong>Agent mode</strong>.</p>
+<p><img alt="5" src="../assets/lab1/images/5.png"></p>
+<h3 id="32-create-the-backend-structure">3.2: Create the backend structure</h3>
+<p><strong>Prompt for Bob:</strong></p>
+<pre><code>Create a Flask backend for the To Do app with the following files:
+1. app.py - Main Flask application with CORS enabled
+2. models.py - SQLAlchemy To Do model
+3. database.py - Database initialization
+4. requirements.txt - Python dependencies
+
+The To Do model should have: id, title, description, completed (boolean), created_at (timestamp)
+</code></pre>
+<p><img alt="6" src="../assets/lab1/images/6.png"></p>
+<p>Bob should generate all the necessary files regarding your backend structure. Review each file as Bob creates them.</p>
+<h3 id="33-implement-rest-api-endpoints">3.3: Implement REST API Endpoints</h3>
+<p><strong>Prompt for Bob:</strong></p>
+<pre><code>Implement the following REST API endpoints in app.py:
+- GET /api/To Dos - List all To Dos
+- POST /api/To Dos - Create a new To Do
+- PUT /api/To Dos/&lt;id&gt; - Update a To Do
+- DELETE /api/To Dos/&lt;id&gt; - Delete a To Do
+
+Include proper error handling and JSON responses.
+</code></pre>
+<p><img alt="7" src="../assets/lab1/images/7.png"></p>
+<h3 id="34-review-generated-code">3.4 Review Generated Code</h3>
+<p>As a best practice, you should review all files generated by Bob to verify that the generated code, logic and overall implementation meet your expectations.</p>
+<p>Example:</p>
+<p><strong>app.py</strong>:</p>
+<pre><code class="language-python">from flask import Flask, request, jsonify
+from flask_cors import CORS
+from models import To Do
+from database import db, init_db
+
+app = Flask(__name__)
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///To Dos.db'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+CORS(app)
+
+init_db(app)
+
+@app.route('/api/To Dos', methods=['GET'])
+def get_To Dos():
+    To Dos = To Do.query.all()
+    return jsonify([To Do.to_dict() for To Do in To Dos])
+
+@app.route('/api/To Dos', methods=['POST'])
+def create_To Do():
+    data = request.get_json()
+    To Do = To Do(
+        title=data.get('title'),
+        description=data.get('description', ''),
+        completed=False
+    )
+    db.session.add(To Do)
+    db.session.commit()
+    return jsonify(To Do.to_dict()), 201
+
+# Additional endpoints...
+</code></pre>
+<h3 id="35-create-unit-test-cases-and-run-them">3.5: Create Unit Test Cases and run them</h3>
+<p>Unit test cases are small checks that verify if individual parts of an application are working correctly, helping catch errors early and before they affect the whole application.</p>
+<p><strong>Prompt for Bob:</strong></p>
+<pre><code class="language-bash">Create unit test cases for each of the api endpoints, and ensure at least 90% code coverage.
+</code></pre>
+<h3 id="36-run-the-backend">3.6: Run the Backend</h3>
+<p>Let's ask Bob how to run the backend.</p>
+<p><strong>Prompt for Bob:</strong></p>
+<pre><code class="language-bash">How can I run the backend application?
+</code></pre>
+<p>Bob should quickly identify the necessary commands to run the backend.</p>
+<p align="center">
+  <img src="../assets/lab1/images/8.png" alt="8" width="400"/>
+</p>
+
+<p>Follow the instructions and run those commands in your terminal.</p>
+<p><img alt="9" src="../assets/lab1/images/9.png"></p>
+<p><strong>✅ Checkpoint</strong>: Backend is running without errors.</p>
+<hr />
+<h2 id="step-4-frontend-development">Step 4: Frontend Development</h2>
+<p>Now, let's create the frontend (user interface).</p>
+<h3 id="41-create-frontend-structure">4.1: Create Frontend Structure</h3>
+<p><strong>Prompt for Bob (still in Agent mode):</strong></p>
+<pre><code>Create a frontend for the To Do app with:
+1. index.html - Main HTML structure with a clean, modern design
+2. styles.css - Responsive CSS styling
+3. app.js - JavaScript for API interactions
+
+Include:
+- Input field for new To Dos
+- List to display To Dos
+- Buttons for complete and delete actions
+- Responsive design for mobile and desktop
+</code></pre>
+<h3 id="42-understanding-literate-coding">4.2: Understanding Literate Coding</h3>
+<p><strong>Literate coding</strong> is the practice of writing code that is self-explanatory through clear structure, meaningful naming conventions, and well-placed comments. The goal is not only to create functional software but also to make the code easy to understand, maintain, and evolve over time. This approach enhances collaboration among developers and helps non-technical stakeholders better understand how the application works and behaves.</p>
+<p><strong>Prompt for Bob:</strong></p>
+<pre><code>In app.js, use literate coding to explain:
+- How the API calls work
+- Why we use async/await
+- How error handling is implemented
+- The purpose of each function
+
+Add detailed comments that would help a beginner understand the code.
+</code></pre>
+<h3 id="43-review-frontend-code">4.3 Review Frontend Code</h3>
+<p>As a best practice, you should review all files generated by Bob to verify that the generated code, logic and overall implementation meet your expectations.</p>
+<p>Example:</p>
+<p><strong>app.js</strong>:</p>
+<pre><code class="language-javascript">/**
+ * To Do Application - Frontend JavaScript
+ * 
+ * This file handles all interactions between the user interface
+ * and the Flask backend API. We use modern JavaScript features
+ * like async/await for cleaner asynchronous code.
+ */
+
+// API base URL - points to our Flask backend
+const API_URL = 'http://localhost:5000/api/To Dos';
+
+/**
+ * Fetches all To Dos from the backend API
+ * 
+ * This function demonstrates the async/await pattern:
+ * - 'async' keyword allows us to use 'await' inside
+ * - 'await' pauses execution until the promise resolves
+ * - This makes asynchronous code look synchronous and easier to read
+ * 
+ * @returns {Promise&lt;void&gt;}
+ */
+async function fetchTo Dos() {
+    try {
+        // Make GET request to backend
+        const response = await fetch(API_URL);
+
+        // Parse JSON response
+        const To Dos = await response.json();
+
+        // Update the UI with fetched To Dos
+        displayTo Dos(To Dos);
+    } catch (error) {
+        // Handle any errors (network issues, server errors, etc.)
+        console.error('Error fetching To Dos:', error);
+        showError('Failed to load To Dos. Please try again.');
+    }
+}
+
+// Additional functions with detailed explanations...
+</code></pre>
+<h3 id="44-open-the-frontend">4.4: Open the frontend</h3>
+<p><strong>For Windows Users</strong>:</p>
+<p>Open your application's frontend by right-clicking the <code>index.html</code> file and then selecting "Open with Live Server".</p>
+<p><img alt="10" src="../assets/lab1/images/10.png"></p>
+<p><img alt="11" src="../assets/lab1/images/11.png"></p>
+<p><strong>For macOS Users</strong>:</p>
+<p>Right-click the <code>index.html</code> file and select "Reveal in Finder"</p>
+<p><img alt="12" src="../assets/lab1/images/12.png"></p>
+<p>Then just open the file in your browser of choice.</p>
+<p><img alt="13" src="../assets/lab1/images/13.png"></p>
+<p>The frontend should now be open, as shown below. Keep in mind that your frontend may look different, since the prompts we provided to Bob were not very detailed. This gave Bob flexibility to make certain implementation and design decisions independently.</p>
+<p><img alt="14" src="../assets/lab1/images/14.png"></p>
+<p><strong>✅ Checkpoint</strong>: Frontend loads and displays the User Interface.</p>
+<hr />
+<h2 id="step-5-test-your-application">Step 5: Test your application</h2>
+<p>Explore and try the frontend you opened in the previous step. Some testing examples:</p>
+<p><strong>Create a To Do:</strong>
+1. Enter a title: "Learn Bob"
+2. Enter a description: "Complete all three labs"
+3. Click "Add To Do"
+4. ✅ To Do appears in the list</p>
+<p><strong>Mark as Complete:</strong>
+1. Click the "Complete" button on a To Do
+2. ✅ To Do shows as completed (strikethrough or checkmark)</p>
+<p><strong>Delete a To Do:</strong>
+1. Click the "Delete" button on a To Do
+2. ✅ To Do is removed from the list</p>
+<p><strong>Refresh Page:</strong>
+1. Refresh the browser
+2. ✅ To Dos persist (stored in database)</p>
+<p><img alt="15" src="../assets/lab1/images/15.png"></p>
+<hr />
+<h2 id="step-6-compare-your-application-with-the-other-participants">Step 6: Compare your application with the other participants</h2>
+<p>Do the applications look the same? Are there any differences?</p>
+<p>Differences are completely normal and even expected. Since the prompts used in this exercise were intentionally high-level, Bob had flexibility in how certain features and design elements were implemented.</p>
+<p>In real projects, teams typically reduce these variations by providing more detailed prompts, design guidelines, and specification/rules files. These artifacts help standardize implementations and ensure greater consistency across applications.</p>
+<hr />
+<h1 id="congratulations-youve-reached-the-end-of-this-lab">Congratulations 🎉 You've reached the end of this lab!</h1>
+<p>You've successfully completed this lab! You've learned to:</p>
+<ul>
+<li>✅ Use Bob modes for different tasks</li>
+<li>✅ Apply literate coding principles</li>
+<li>✅ Build a complete full-stack application</li>
+</ul>
+<hr />
+<h2 id="lab-quiz-unlock-the-next-lab">🎓 Lab Quiz — Unlock the Next Lab</h2>
+<div class="lab-quiz" id="quiz-lab1" data-unlocks="lab2">
+
+  <!-- Question 1 -->
+  <div class="quiz-question" data-correct="C">
+    <p><strong>Question 1:</strong> Which Bob mode is described as best for "Writing, modifying, refactoring, or improving code"?</p>
+    <label><input type="radio" name="q1-lab1" value="A"> A) Ask Mode</label><br>
+    <label><input type="radio" name="q1-lab1" value="B"> B) Plan Mode</label><br>
+    <label><input type="radio" name="q1-lab1" value="C"> C) Agent Mode</label><br>
+    <label><input type="radio" name="q1-lab1" value="D"> D) Review Mode</label>
+    <div class="quiz-feedback" hidden></div>
+  </div>
+
+  <!-- Question 2 -->
+  <div class="quiz-question" data-correct="C">
+    <p><strong>Question 2:</strong> What database technology does the To Do application backend use?</p>
+    <label><input type="radio" name="q2-lab1" value="A"> A) PostgreSQL</label><br>
+    <label><input type="radio" name="q2-lab1" value="B"> B) MySQL</label><br>
+    <label><input type="radio" name="q2-lab1" value="C"> C) SQLite</label><br>
+    <label><input type="radio" name="q2-lab1" value="D"> D) MongoDB</label>
+    <div class="quiz-feedback" hidden></div>
+  </div>
+
+  <!-- Question 3 -->
+  <div class="quiz-question" data-correct="C">
+    <p><strong>Question 3:</strong> According to Lab 1, what is the main goal of literate coding?</p>
+    <label><input type="radio" name="q3-lab1" value="A"> A) Writing the shortest possible code with no comments</label><br>
+    <label><input type="radio" name="q3-lab1" value="B"> B) Using only one programming language per project</label><br>
+    <label><input type="radio" name="q3-lab1" value="C"> C) Writing code that is self-explanatory through clear structure, meaningful naming, and well-placed comments</label><br>
+    <label><input type="radio" name="q3-lab1" value="D"> D) Generating code automatically without human review</label>
+    <div class="quiz-feedback" hidden></div>
+  </div>
+
+  <button class="quiz-submit-btn" onclick="submitQuiz('lab1')">Submit Answers</button>
+  <div class="quiz-result" hidden></div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.top", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../javascripts/quiz.js"></script>
+      
+    
+  </body>
+</html>
