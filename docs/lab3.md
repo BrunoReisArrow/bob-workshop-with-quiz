@@ -292,23 +292,23 @@ You've successfully used Bob to:
 <div class="lab-quiz" id="quiz-lab3" data-unlocks="lab4">
 
   <!-- Question 1 -->
-  <div class="quiz-question" data-correct="C">
+  <div class="quiz-question" data-correct="D">
     <p><strong>Question 1:</strong> Lab 3 highlights the following code as the highest-risk vulnerability. Why is it dangerous?</p>
     <pre><code>sql = f"SELECT * FROM todos WHERE title LIKE '%{query}%'"
 result = db.session.execute(sql)</code></pre>
     <label><input type="radio" name="q1-lab3" value="A"> A) It uses the wrong SQL keyword (LIKE instead of =)</label><br>
     <label><input type="radio" name="q1-lab3" value="B"> B) It runs two queries instead of one</label><br>
-    <label><input type="radio" name="q1-lab3" value="C"> C) User input is inserted directly into the SQL string, allowing an attacker to inject arbitrary SQL commands</label><br>
-    <label><input type="radio" name="q1-lab3" value="D"> D) It does not return all columns from the table</label>
+    <label><input type="radio" name="q1-lab3" value="C"> C) It does not return all columns from the table</label><br>
+    <label><input type="radio" name="q1-lab3" value="D"> D) User input is inserted directly into the SQL string, allowing an attacker to inject arbitrary SQL commands</label>
     <div class="quiz-feedback" hidden></div>
   </div>
 
   <!-- Question 2 -->
-  <div class="quiz-question" data-correct="C">
+  <div class="quiz-question" data-correct="A">
     <p><strong>Question 2:</strong> According to Lab 3, which of the following is the correct approach for handling sensitive credentials?</p>
-    <label><input type="radio" name="q2-lab3" value="A"> A) Store them directly in models.py for easy access</label><br>
+    <label><input type="radio" name="q2-lab3" value="A"> A) Move them to environment variables, create a .env.example with placeholders, and load them safely at runtime</label><br>
     <label><input type="radio" name="q2-lab3" value="B"> B) Hard-code them in config.py and commit the file to source control</label><br>
-    <label><input type="radio" name="q2-lab3" value="C"> C) Move them to environment variables, create a .env.example with placeholders, and load them safely at runtime</label><br>
+    <label><input type="radio" name="q2-lab3" value="C"> C) Store them directly in models.py for easy access</label><br>
     <label><input type="radio" name="q2-lab3" value="D"> D) Encrypt them inside the source code file</label>
     <div class="quiz-feedback" hidden></div>
   </div>

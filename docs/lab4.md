@@ -230,31 +230,31 @@ You've successfully used Bob to:
 <div class="lab-quiz" id="quiz-lab4" data-unlocks="lab5">
 
   <!-- Question 1 -->
-  <div class="quiz-question" data-correct="C">
+  <div class="quiz-question" data-correct="B">
     <p><strong>Question 1:</strong> According to Lab 4, which Python feature does NOT have a direct equivalent in JavaScript and requires special handling?</p>
     <label><input type="radio" name="q1-lab4" value="A"> A) For loops</label><br>
-    <label><input type="radio" name="q1-lab4" value="B"> B) String formatting</label><br>
-    <label><input type="radio" name="q1-lab4" value="C"> C) The <code>with open(...)</code> context manager</label><br>
+    <label><input type="radio" name="q1-lab4" value="B"> B) The <code>with open(...)</code> context manager</label><br>
+    <label><input type="radio" name="q1-lab4" value="C"> C) String formatting</label><br>
     <label><input type="radio" name="q1-lab4" value="D"> D) Integer arithmetic</label>
     <div class="quiz-feedback" hidden></div>
   </div>
 
   <!-- Question 2 -->
-  <div class="quiz-question" data-correct="C">
+  <div class="quiz-question" data-correct="D">
     <p><strong>Question 2:</strong> In Lab 4, what does Bob produce during the Plan Mode step before any code is written?</p>
     <label><input type="radio" name="q2-lab4" value="A"> A) The complete JavaScript file</label><br>
     <label><input type="radio" name="q2-lab4" value="B"> B) A set of unit tests for the Python script</label><br>
-    <label><input type="radio" name="q2-lab4" value="C"> C) A Python-to-JavaScript feature mapping, library equivalents, proposed file layout, dependency recommendations, and validation steps</label><br>
-    <label><input type="radio" name="q2-lab4" value="D"> D) A performance benchmark comparing both languages</label>
+    <label><input type="radio" name="q2-lab4" value="C"> C) A performance benchmark comparing both languages</label><br>
+    <label><input type="radio" name="q2-lab4" value="D"> D) A Python-to-JavaScript feature mapping, library equivalents, proposed file layout, dependency recommendations, and validation steps</label>
     <div class="quiz-feedback" hidden></div>
   </div>
 
   <!-- Question 3 -->
-  <div class="quiz-question" data-correct="C">
+  <div class="quiz-question" data-correct="A">
     <p><strong>Question 3:</strong> What does Lab 4's final step ask you to verify about the Python and JavaScript versions of <code>data_processor</code>?</p>
-    <label><input type="radio" name="q3-lab4" value="A"> A) That the JavaScript version runs faster than the Python version</label><br>
+    <label><input type="radio" name="q3-lab4" value="A"> A) That both implementations produce equivalent CSV-processing and JSON-export behavior</label><br>
     <label><input type="radio" name="q3-lab4" value="B"> B) That both files have the same number of lines of code</label><br>
-    <label><input type="radio" name="q3-lab4" value="C"> C) That both implementations produce equivalent CSV-processing and JSON-export behavior</label><br>
+    <label><input type="radio" name="q3-lab4" value="C"> C) That the JavaScript version runs faster than the Python version</label><br>
     <label><input type="radio" name="q3-lab4" value="D"> D) That both versions pass the same set of unit tests</label>
     <div class="quiz-feedback" hidden></div>
   </div>
