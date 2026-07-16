@@ -44,7 +44,7 @@ By the end of this lab, you will:
 - ✅ Modify an existing full-stack application
 
 
-## Understanding Ask Mode vs Code Mode
+## Understanding Ask Mode vs Agent Mode
 
 This lab demonstrated an important distinction between Bob modes:
 
@@ -480,7 +480,7 @@ You've successfully learned how to:
 - ✅ Analyze project structure and dependencies
 - ✅ Identify files involved in a feature implementation
 - ✅ Use Ask Mode for architecture understanding
-- ✅ Use Code Mode for feature implementation
+- ✅ Use Agent Mode for feature implementation
 - ✅ Generate documentation
 
 - ✅ Review and approve generated code changes
@@ -495,11 +495,11 @@ This workflow closely reflects how AI-assisted software development is increasin
 
   <!-- Question 1 -->
   <div class="quiz-question" data-correct="B">
-    <p><strong>Question 1:</strong> According to Lab 2's comparison table, what does Ask Mode do that Agent Mode does not?</p>
-    <label><input type="radio" name="q1-lab2" value="A"> A) Modifies and generates code</label><br>
-    <label><input type="radio" name="q1-lab2" value="B"> B) Understands and explains code, and helps with architecture analysis</label><br>
-    <label><input type="radio" name="q1-lab2" value="C"> C) Implements features and executes changes</label><br>
-    <label><input type="radio" name="q1-lab2" value="D"> D) Runs unit tests automatically</label>
+    <p><strong>Question 1:</strong> According to Lab 2's comparison table, which of the following is a capability of Ask Mode?</p>
+    <label><input type="radio" name="q1-lab2" value="A"> A) Executes changes and refactors existing logic</label><br>
+    <label><input type="radio" name="q1-lab2" value="B"> B) Helps with architecture analysis and suggests implementation strategies</label><br>
+    <label><input type="radio" name="q1-lab2" value="C"> C) Creates new files and implements features directly</label><br>
+    <label><input type="radio" name="q1-lab2" value="D"> D) Runs terminal commands as part of development work</label>
     <div class="quiz-feedback" hidden></div>
   </div>
 

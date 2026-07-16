@@ -42,7 +42,7 @@ The Python script:
 By the end of this lab, you will:
 - ✅ Use Ask Mode to understand the source code
 - ✅ Use Plan Mode to design a translation strategy
-- ✅ Use Code Mode to implement the JavaScript version
+- ✅ Use Agent Mode to implement the JavaScript version
 - ✅ Compare Python features with JavaScript equivalents
 - ✅ Validate that both versions produce the same outcome
 
@@ -230,12 +230,10 @@ You've successfully used Bob to:
 <div class="lab-quiz" id="quiz-lab4" data-unlocks="lab5">
 
   <!-- Question 1 -->
-  <div class="quiz-question" data-correct="B">
-    <p><strong>Question 1:</strong> According to Lab 4, which Python feature does NOT have a direct equivalent in JavaScript and requires special handling?</p>
-    <label><input type="radio" name="q1-lab4" value="A"> A) For loops</label><br>
-    <label><input type="radio" name="q1-lab4" value="B"> B) The <code>with open(...)</code> context manager</label><br>
-    <label><input type="radio" name="q1-lab4" value="C"> C) String formatting</label><br>
-    <label><input type="radio" name="q1-lab4" value="D"> D) Integer arithmetic</label>
+  <div class="quiz-question" data-correct="A">
+    <p><strong>Question 1:</strong> True or False: Bob can translate a complete application from one programming language to another, preserving the original logic while applying the target language's best practices and conventions.</p>
+    <label><input type="radio" name="q1-lab4" value="A"> A) True</label><br>
+    <label><input type="radio" name="q1-lab4" value="B"> B) False</label>
     <div class="quiz-feedback" hidden></div>
   </div>
 
@@ -250,12 +248,12 @@ You've successfully used Bob to:
   </div>
 
   <!-- Question 3 -->
-  <div class="quiz-question" data-correct="A">
-    <p><strong>Question 3:</strong> What does Lab 4's final step ask you to verify about the Python and JavaScript versions of <code>data_processor</code>?</p>
-    <label><input type="radio" name="q3-lab4" value="A"> A) That both implementations produce equivalent CSV-processing and JSON-export behavior</label><br>
-    <label><input type="radio" name="q3-lab4" value="B"> B) That both files have the same number of lines of code</label><br>
-    <label><input type="radio" name="q3-lab4" value="C"> C) That the JavaScript version runs faster than the Python version</label><br>
-    <label><input type="radio" name="q3-lab4" value="D"> D) That both versions pass the same set of unit tests</label>
+  <div class="quiz-question" data-correct="B">
+    <p><strong>Question 3:</strong> Which of the following is a capability of Bob demonstrated in Lab 4?</p>
+    <label><input type="radio" name="q3-lab4" value="A"> A) Bob can only read code files but cannot execute them</label><br>
+    <label><input type="radio" name="q3-lab4" value="B"> B) Bob can run scripts in multiple languages and compare their outputs directly in your workspace</label><br>
+    <label><input type="radio" name="q3-lab4" value="C"> C) Bob requires a separate terminal extension to run any commands</label><br>
+    <label><input type="radio" name="q3-lab4" value="D"> D) Bob can only run JavaScript files, not Python scripts</label>
     <div class="quiz-feedback" hidden></div>
   </div>
 

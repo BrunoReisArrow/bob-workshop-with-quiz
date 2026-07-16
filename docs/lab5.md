@@ -268,12 +268,12 @@ You've successfully used Bob to:
 <div class="lab-quiz" id="quiz-lab5" data-final="true">
 
   <!-- Question 1 -->
-  <div class="quiz-question" data-correct="B">
-    <p><strong>Question 1:</strong> In Lab 5, which of the following is NOT listed as something Bob is asked to identify during the modernization assessment?</p>
-    <label><input type="radio" name="q1-lab5" value="A"> A) Which parts look like Java 8-era code</label><br>
-    <label><input type="radio" name="q1-lab5" value="B"> B) Which unit tests need to be rewritten for Java 17</label><br>
-    <label><input type="radio" name="q1-lab5" value="C"> C) Which files are the best modernization candidates</label><br>
-    <label><input type="radio" name="q1-lab5" value="D"> D) Which changes are language-level versus dependency-level</label>
+  <div class="quiz-question" data-correct="C">
+    <p><strong>Question 1:</strong> Which of the following is a capability of Bob demonstrated in Lab 5?</p>
+    <label><input type="radio" name="q1-lab5" value="A"> A) Bob can only modernize source code and cannot reason about build configuration or dependencies</label><br>
+    <label><input type="radio" name="q1-lab5" value="B"> B) Bob can automatically upgrade all Maven dependencies to the latest version without user review</label><br>
+    <label><input type="radio" name="q1-lab5" value="C"> C) Bob can analyze build configuration and dependencies to identify risks and compatibility concerns for a version migration</label><br>
+    <label><input type="radio" name="q1-lab5" value="D"> D) Bob requires a pre-configured migration template to assess upgrade risks</label>
     <div class="quiz-feedback" hidden></div>
   </div>
 
@@ -308,6 +308,9 @@ You've successfully used Bob to:
     <span class="congrats-icon">🎉</span>
     <h2>Congratulations!</h2>
     <p>You completed all the Labs!</p>
+    <p>Please, take a moment to give us some feedback 😊</p>
+    <a href="https://pt.surveymonkey.com/r/N75YFFT" target="_blank">https://pt.surveymonkey.com/r/N75YFFT</a>
+    <br><br>
     <button onclick="document.getElementById('congrats-modal').hidden=true">Close</button>
   </div>
 </div>

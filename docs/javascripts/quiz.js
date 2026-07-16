@@ -132,13 +132,13 @@ function getExplanations(labId) {
   // One explanation string per question, shown when the answer is wrong.
   const map = {
     lab5: [
-      "Lab 5, Step 1.3 asks Bob to explain which parts look like Java 8-era code, which files are modernization candidates, where records/streams/java.time could help, and which changes are language-level vs dependency-level. Unit test rewriting is not part of that prompt.",
+      "Bob goes beyond just source code — in Lab 5, Step 5.2, Bob is asked to analyze the Java dependency and build upgrade risks, identifying what could block a move from Java 8 to Java 17 and separating source refactors from ecosystem-level risks.",
       "Lab 5, Step 3.2 explicitly states: 'Let's start with Product.java' as the first domain-model modernization example, asking Bob to convert it to a record.",
       "Lab 5, Step 2.2 states that Bob may recommend creating 'modernized/' and 'migration-guide/' folders, and that 'These folders are part of the modernization workflow.'"
     ],
     lab1: [
       "Lab 1, Step 2 explicitly states that Agent Mode is for 'Writing, modifying, refactoring, or improving code', listing actions such as implementing features, creating new files, fixing bugs, and running tools.",
-      "Lab 1's 'What You'll Build' section states the backend uses a Python Flask REST API with an SQLite database. SQLite was chosen because it requires no separate installation.",
+      "Plan Mode is designed for planning, designing, and strategizing before implementation. In Lab 1, Step 2.2, it is used to plan the project structure, API endpoints, and database schema before any code is written.",
       "Lab 1, Step 4.2 defines literate coding as 'the practice of writing code that is self-explanatory through clear structure, meaningful naming conventions, and well-placed comments', aimed at making code easy to understand, maintain, and evolve."
     ],
     lab2: [
@@ -148,13 +148,13 @@ function getExplanations(labId) {
     ],
     lab3: [
       "Lab 3, Step 4.1 explains that this code is dangerous because 'user input is inserted directly into the SQL string', allowing an attacker to inject arbitrary SQL. The fix is to use parameterized queries.",
-      "Lab 3, Step 4.2 lists the correct approach as: moving secrets to environment variables, creating a .env.example file with placeholders only, and loading configuration safely at runtime.",
+      "Ask Mode is used before making any changes. In Lab 3, Step 2.1, Ask Mode is selected first to explore the codebase and understand what is there, what is missing, and what should be fixed — without modifying anything yet.",
       "Lab 3, Step 3.1 states: 'Plan Mode is useful here because you are not fixing a single bug. You are prioritizing a group of related security and project hygiene issues.'"
     ],
     lab4: [
-      "Lab 4, Step 1.4 lists translation challenges and specifically calls out 'with open(...) versus Node.js file and stream APIs' as one of the key differences requiring special handling.",
+      "As demonstrated in Lab 4, Bob can translate a complete application from one programming language to another — preserving the original logic while applying the target language's best practices, async patterns, documentation style, and error handling.",
       "Lab 4, Step 2.2 instructs Bob to produce: a Python-to-JavaScript feature mapping, library equivalents, proposed file layout in solution/, dependency recommendations, and validation steps — all before any code is written.",
-      "Lab 4, Step 4.1 asks you to 'compare their outputs and confirm whether both implementations create equivalent CSV-processing and JSON-export behavior.'"
+      "Bob is not limited to reading code — in Lab 4, Step 4.1, Bob runs both the Python and JavaScript versions of data_processor and compares their outputs directly in the workspace to confirm equivalent behavior."
     ]
   };
   return map[labId] || [];

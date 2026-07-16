@@ -35,7 +35,7 @@ By the end of this lab, you will:
 - ✅ Use Ask Mode to inspect an unfamiliar and imperfect codebase
 - ✅ Use Plan Mode to prioritize security remediation work
 - ✅ Identify SQL injection, hardcoded secrets, and weak error handling
-- ✅ Use Code Mode to apply secure fixes
+- ✅ Use Agent Mode to apply secure fixes
 - ✅ Validate the remediated application flow
 
 ## Lab Structure
@@ -44,7 +44,7 @@ By the end of this lab, you will:
 - [Explore the codebase with Ask Mode](#step-2-explore-the-codebase-with-ask-mode)
 - [Create a remediation plan with Plan Mode](#step-3-create-a-remediation-plan-with-plan-mode)
 - [Review the key vulnerabilities](#step-4-review-the-key-vulnerabilities)
-- [Implement fixes with Code Mode](#step-5-implement-fixes-with-agent-mode)
+- [Implement fixes with Agent Mode](#step-5-implement-fixes-with-agent-mode)
 - [Test and validate the result](#step-6-test-and-validate-the-result)
 
 ---
@@ -305,11 +305,11 @@ result = db.session.execute(sql)</code></pre>
 
   <!-- Question 2 -->
   <div class="quiz-question" data-correct="A">
-    <p><strong>Question 2:</strong> According to Lab 3, which of the following is the correct approach for handling sensitive credentials?</p>
-    <label><input type="radio" name="q2-lab3" value="A"> A) Move them to environment variables, create a .env.example with placeholders, and load them safely at runtime</label><br>
-    <label><input type="radio" name="q2-lab3" value="B"> B) Hard-code them in config.py and commit the file to source control</label><br>
-    <label><input type="radio" name="q2-lab3" value="C"> C) Store them directly in models.py for easy access</label><br>
-    <label><input type="radio" name="q2-lab3" value="D"> D) Encrypt them inside the source code file</label>
+    <p><strong>Question 2:</strong> In Lab 3, which Bob mode is used first to explore the vulnerable codebase and understand what is there, what is missing, and what should be fixed — before any changes are made?</p>
+    <label><input type="radio" name="q2-lab3" value="A"> A) Ask Mode</label><br>
+    <label><input type="radio" name="q2-lab3" value="B"> B) Agent Mode</label><br>
+    <label><input type="radio" name="q2-lab3" value="C"> C) Plan Mode</label><br>
+    <label><input type="radio" name="q2-lab3" value="D"> D) Review Mode</label>
     <div class="quiz-feedback" hidden></div>
   </div>
 
