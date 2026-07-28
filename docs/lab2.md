@@ -20,6 +20,7 @@ The application used in this lab corresponds to the application developed in Lab
 ## Before Starting
 
 Make sure you have:
+
 - IBM Bob access
 - Python 3.8+
 - Node.js 14+
@@ -27,6 +28,7 @@ Make sure you have:
 - A local workspace where Bob can create files and run commands
 
 Download the application ZIP file [here](assets/lab2/application.zip). Place it somewhere easily accessible on your computer, such as:
+
 - Desktop
 - Documents folder
 - Downloads folder
@@ -36,6 +38,7 @@ You will extract and open this project in IBM Bob during the first step of the l
 ## What You'll Learn
 
 By the end of this lab, you will:
+
 - ✅ Use Bob to understand an unfamiliar codebase
 - ✅ Learn how Bob analyzes project structure and dependencies
 - ✅ Identify which files need to be modified for a feature request
@@ -124,6 +127,7 @@ Feel free to explore the application and try it out before you advance with the 
 ### 2.1: Analyze and document the project structure
 
 Before modifying an application, developers first need to understand:
+
 - What the application does
 - How the frontend and backend communicate
 - Which files are responsible for specific features
@@ -146,6 +150,7 @@ Please analyze this application and explain:
 Bob will analyze the existing codebase and help you quickly understand how the application works.
 
 This is particularly valuable when working with:
+
 - Large projects
 - Legacy applications
 - Applications created by other developers
@@ -224,6 +229,7 @@ In order to finish implementing this new feature, let's switch to **Agent Mode**
 <img alt="14" src="../assets/lab2/images/14.png">
 
 Unlike Ask Mode, Agent Mode can:
+
 - Modify files
 - Create new code
 - Refactor existing logic
@@ -257,6 +263,7 @@ This step demonstrates how Bob approaches multi-file changes in a structured way
 Before modifying files, Bob may ask for approval depending on your settings.
 
 You will likely see:
+
 - Proposed file changes
 - Generated task lists
 - Code diffs
@@ -271,6 +278,7 @@ This approval flow is important because it keeps developers in control of the ge
 Approve the generated changes and let Bob update the application files.
 
 Once completed, Bob should modify:
+
 - The frontend interface
 - The frontend JavaScript logic
 - The backend API endpoint
@@ -326,6 +334,7 @@ Example test:
 <img alt="19" src="../assets/lab2/images/19.png">
 
 If the application does not work correctly, ask Bob to:
+
 - Analyze the issue
 - Identify the root cause
 - Suggest a fix
@@ -476,6 +485,7 @@ Review Bob's proposed changes carefully before accepting them.
 ## Congratulations 🎉 You've completed Lab 2!
 
 You've successfully learned how to:
+
 - ✅ Understand an existing application using Bob
 - ✅ Analyze project structure and dependencies
 - ✅ Identify files involved in a feature implementation

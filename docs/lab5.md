@@ -18,6 +18,7 @@ This lab is intentionally more advanced than the previous Bob labs. The goal is 
 ## Before Starting
 
 Make sure you have:
+
 - IBM Bob access
 - A JDK for Java 17
 - Maven
@@ -29,6 +30,7 @@ Make sure you have:
 This lab uses the legacy Java project in `legacy/` as the starting point.
 
 You will use Bob to:
+
 - Analyze Java 8-style code
 - Identify modernization opportunities
 - Generate migration notes and planning artifacts
@@ -38,6 +40,7 @@ You will use Bob to:
 ## What You'll Learn
 
 By the end of this lab, you will:
+
 - ✅ Use Bob to inspect a legacy Java codebase
 - ✅ Create a phased migration plan
 - ✅ Modernize domain models and business logic
@@ -64,6 +67,7 @@ Download the legacy application ZIP file [here](assets/lab5/legacy-app.zip). Ext
 <img alt="1" src="../assets/lab5/images/1.png">
 
 The sample includes models and services such as:
+
 - `legacy/src/main/java/com/example/ecommerce/model/Product.java`
 - `legacy/src/main/java/com/example/ecommerce/model/Order.java`
 - `legacy/src/main/java/com/example/ecommerce/service/PaymentService.java`
@@ -119,6 +123,7 @@ Include:
 ```
 
 Bob may recommend creating folders such as:
+
 - `modernized/`
 - `migration-guide/`
 
@@ -256,6 +261,7 @@ Please run the relevant build or test commands for the migrated target structure
 ## Congratulations 🎉 You've completed Lab 5!
 
 You've successfully used Bob to:
+
 - ✅ Assess a legacy Java codebase
 - ✅ Plan a phased modernization
 - ✅ Apply targeted Java 17-style improvements

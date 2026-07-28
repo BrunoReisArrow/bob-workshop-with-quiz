@@ -21,17 +21,20 @@ This lab is intentionally closer to a real inherited codebase than to a clean gr
 ## Before Starting
 
 Make sure you have:
+
 - IBM Bob access
 - Python 3.8+
 - A terminal
 - A local workspace where Bob can create files and run commands
 
 Helpful but not required:
+
 - Basic familiarity with Flask and REST APIs
 
 ## What You'll Learn
 
 By the end of this lab, you will:
+
 - ✅ Use Ask Mode to inspect an unfamiliar and imperfect codebase
 - ✅ Use Plan Mode to prioritize security remediation work
 - ✅ Identify SQL injection, hardcoded secrets, and weak error handling
@@ -63,6 +66,7 @@ Download [`vulnerable-app.zip`](assets/lab3/vulnerable-app.zip), extract it loca
 ### 1.2: Review the files you will analyze
 
 The main files for this lab are:
+
 - `vulnerable-app/database.py` for the Flask API and several backend vulnerabilities
 - `vulnerable-app/models.py` for hardcoded secrets
 - `vulnerable-app/config.py` for an environment-template style configuration file
@@ -184,6 +188,7 @@ This is dangerous because user input is inserted directly into the SQL string.
 The current values in `models.py` include credentials and application secrets that should never live in source code.
 
 Typical fixes include:
+
 - Moving secrets to environment variables
 - Creating a `.env.example` file with placeholders only
 - Loading configuration safely at runtime
@@ -269,6 +274,7 @@ Bob may run commands, create test files, inspect outputs, and make a final corre
 ### 6.2: Review the final state
 
 Before finishing, confirm that:
+
 - The most critical issues were fixed first
 - The project is easier to understand than when you started
 - The validation strategy matches the implemented changes
@@ -280,6 +286,7 @@ Before finishing, confirm that:
 ## Congratulations 🎉 You've completed Lab 3!
 
 You've successfully used Bob to:
+
 - ✅ Analyze a vulnerable application
 - ✅ Prioritize issues by severity
 - ✅ Apply safer implementation patterns

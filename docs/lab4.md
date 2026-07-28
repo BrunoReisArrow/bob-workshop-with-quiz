@@ -18,6 +18,7 @@ This reflects a common real-world scenario where teams modernize utilities, port
 ## Before Starting
 
 Make sure you have:
+
 - IBM Bob access
 - Python 3.8+
 - Node.js 14+
@@ -25,6 +26,7 @@ Make sure you have:
 - A local workspace where Bob can create files and run commands
 
 Helpful but not required:
+
 - Basic familiarity with Python and JavaScript
 
 
@@ -33,6 +35,7 @@ Helpful but not required:
 You will translate the Python source file `source/data_processor.py` into a Node.js implementation.
 
 The Python script:
+
 - Reads CSV files
 - Performs statistical calculations
 - Exports results to JSON
@@ -40,6 +43,7 @@ The Python script:
 ## What You'll Learn
 
 By the end of this lab, you will:
+
 - ✅ Use Ask Mode to understand the source code
 - ✅ Use Plan Mode to design a translation strategy
 - ✅ Use Agent Mode to implement the JavaScript version
@@ -64,6 +68,7 @@ Download the lab files ZIP [here](assets/lab4/source.zip). Extract it to a new l
 <img alt="1" src="../assets/lab4/images/1.png">
 
 Review the code structure and pay attention to:
+
 - Class-based design
 - Type hints
 - Context managers such as `with open(...)`
@@ -107,6 +112,7 @@ Consider syntax, libraries, async file handling, and type documentation.
 ```
 
 Bob should highlight differences such as:
+
 - `with open(...)` versus Node.js file and stream APIs
 - `csv.DictReader` versus `csv-parser`
 - Type hints versus JSDoc
@@ -218,6 +224,7 @@ Review the generated output and result files together.
 ## Congratulations 🎉 You've completed Lab 4!
 
 You've successfully used Bob to:
+
 - ✅ Analyze Python code
 - ✅ Plan a language translation
 - ✅ Generate a JavaScript implementation

@@ -7,6 +7,7 @@ In this lab, you'll learn to use Bob's AI-powered features to build a complete f
 ## Before Starting
 
 Make sure you have:
+
 - IBM Bob access
 - Python 3.8+
 - Node.js 14+
@@ -17,6 +18,7 @@ Make sure you have:
 ## What You'll Build
 
 A full-stack To Do application with:
+
 - **Backend**: Python Flask REST API with SQLite database
 - **Frontend**: Modern JavaScript single-page application
 - **Features**: Create, read, update, and delete To Dos
@@ -116,12 +118,14 @@ Please help me plan:
 Before providing a plan, Bob will ask clarifying questions to understand your requirements better. This is a key differentiator - Bob lets you drive the process while making helpful suggestions.
 
 Bob might ask:
+
 - "How complex should the application be?"
 - "Which database would you prefer (SQLite, PostgreSQL, MySQL)?"
 - "Do you need user authentication?"
 - "Should we include additional features like categories or priorities?"
 
 **For this lab, respond with basic requirements:**
+
 - Simple/basic complexity
 - SQLite database (no installation needed)
 - No user authentication
