@@ -315,7 +315,7 @@ You've successfully used Bob to:
     <h2>Congratulations!</h2>
     <p>You completed all the Labs!</p>
     <p>Please, take a moment to give us some feedback 😊</p>
-    <a href="https://pt.surveymonkey.com/r/N75YFFT" target="_blank">https://pt.surveymonkey.com/r/N75YFFT</a>
+    <a href="https://pt.surveymonkey.com/r/JPNJBCK" target="_blank">https://pt.surveymonkey.com/r/N75YFFT</a>
     <br><br>
     <button onclick="document.getElementById('congrats-modal').hidden=true">Close</button>
   </div>
