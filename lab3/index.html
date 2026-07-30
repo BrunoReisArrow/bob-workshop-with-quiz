@@ -1334,20 +1334,26 @@
 This lab is a good fit for Bob Findings because the sample includes multiple classes of issues across application code, configuration, and project structure.</p>
 </blockquote>
 <h2 id="before-starting">Before Starting</h2>
-<p>Make sure you have:
-- IBM Bob access
-- Python 3.8+
-- A terminal
-- A local workspace where Bob can create files and run commands</p>
-<p>Helpful but not required:
-- Basic familiarity with Flask and REST APIs</p>
+<p>Make sure you have:</p>
+<ul>
+<li>IBM Bob access</li>
+<li>Python 3.8+</li>
+<li>A terminal</li>
+<li>A local workspace where Bob can create files and run commands</li>
+</ul>
+<p>Helpful but not required:</p>
+<ul>
+<li>Basic familiarity with Flask and REST APIs</li>
+</ul>
 <h2 id="what-youll-learn">What You'll Learn</h2>
-<p>By the end of this lab, you will:
-- ✅ Use Ask Mode to inspect an unfamiliar and imperfect codebase
-- ✅ Use Plan Mode to prioritize security remediation work
-- ✅ Identify SQL injection, hardcoded secrets, and weak error handling
-- ✅ Use Agent Mode to apply secure fixes
-- ✅ Validate the remediated application flow</p>
+<p>By the end of this lab, you will:</p>
+<ul>
+<li>✅ Use Ask Mode to inspect an unfamiliar and imperfect codebase</li>
+<li>✅ Use Plan Mode to prioritize security remediation work</li>
+<li>✅ Identify SQL injection, hardcoded secrets, and weak error handling</li>
+<li>✅ Use Agent Mode to apply secure fixes</li>
+<li>✅ Validate the remediated application flow</li>
+</ul>
 <h2 id="lab-structure">Lab Structure</h2>
 <ul>
 <li><a href="#step-1-open-the-vulnerable-application">Open the vulnerable application</a></li>
@@ -1364,11 +1370,13 @@ This lab is a good fit for Bob Findings because the sample includes multiple cla
 <p><img alt="1" src="../assets/lab3/images/1.png"></p>
 <p><strong>✅ Checkpoint</strong>: The vulnerable application is open in your Bob workspace.</p>
 <h3 id="12-review-the-files-you-will-analyze">1.2: Review the files you will analyze</h3>
-<p>The main files for this lab are:
-- <code>vulnerable-app/database.py</code> for the Flask API and several backend vulnerabilities
-- <code>vulnerable-app/models.py</code> for hardcoded secrets
-- <code>vulnerable-app/config.py</code> for an environment-template style configuration file
-- <code>vulnerable-app/app.js</code> for the data model definition</p>
+<p>The main files for this lab are:</p>
+<ul>
+<li><code>vulnerable-app/database.py</code> for the Flask API and several backend vulnerabilities</li>
+<li><code>vulnerable-app/models.py</code> for hardcoded secrets</li>
+<li><code>vulnerable-app/config.py</code> for an environment-template style configuration file</li>
+<li><code>vulnerable-app/app.js</code> for the data model definition</li>
+</ul>
 <blockquote>
 <p><strong>Note</strong><br />
 The naming inside this sample is inconsistent on purpose. Bob should help you identify these mismatches quickly.</p>
@@ -1436,10 +1444,12 @@ result = db.session.execute(sql)
 <p>This is dangerous because user input is inserted directly into the SQL string.</p>
 <h3 id="42-hardcoded-secrets-in-source-control">4.2: Hardcoded secrets in source control</h3>
 <p>The current values in <code>models.py</code> include credentials and application secrets that should never live in source code.</p>
-<p>Typical fixes include:
-- Moving secrets to environment variables
-- Creating a <code>.env.example</code> file with placeholders only
-- Loading configuration safely at runtime</p>
+<p>Typical fixes include:</p>
+<ul>
+<li>Moving secrets to environment variables</li>
+<li>Creating a <code>.env.example</code> file with placeholders only</li>
+<li>Loading configuration safely at runtime</li>
+</ul>
 <h3 id="43-weak-validation-and-error-handling">4.3: Weak validation and error handling</h3>
 <p><code>database.py</code> also exposes internal errors directly to clients and accepts request payloads with little or no validation.</p>
 <p>That creates risk even when the issue is not a classic injection vulnerability.</p>
@@ -1484,18 +1494,22 @@ Do not expose internal stack traces or raw exception details to API clients.
 </code></pre>
 <p>Bob may run commands, create test files, inspect outputs, and make a final correction pass if needed.</p>
 <h3 id="62-review-the-final-state">6.2: Review the final state</h3>
-<p>Before finishing, confirm that:
-- The most critical issues were fixed first
-- The project is easier to understand than when you started
-- The validation strategy matches the implemented changes</p>
+<p>Before finishing, confirm that:</p>
+<ul>
+<li>The most critical issues were fixed first</li>
+<li>The project is easier to understand than when you started</li>
+<li>The validation strategy matches the implemented changes</li>
+</ul>
 <p><strong>✅ Checkpoint</strong>: You have completed a full security-analysis and remediation workflow with Bob.</p>
 <hr />
 <h2 id="congratulations-youve-completed-lab-3">Congratulations 🎉 You've completed Lab 3!</h2>
-<p>You've successfully used Bob to:
-- ✅ Analyze a vulnerable application
-- ✅ Prioritize issues by severity
-- ✅ Apply safer implementation patterns
-- ✅ Improve both security and maintainability</p>
+<p>You've successfully used Bob to:</p>
+<ul>
+<li>✅ Analyze a vulnerable application</li>
+<li>✅ Prioritize issues by severity</li>
+<li>✅ Apply safer implementation patterns</li>
+<li>✅ Improve both security and maintainability</li>
+</ul>
 <hr />
 <h2 id="lab-quiz-unlock-the-next-lab">🎓 Lab Quiz — Unlock the Next Lab</h2>
 <div class="lab-quiz" id="quiz-lab3" data-unlocks="lab4">

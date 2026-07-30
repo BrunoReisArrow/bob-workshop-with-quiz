@@ -1597,25 +1597,31 @@
 <p>This reflects a very common real-world scenario, where developers often work on existing projects rather than starting from zero.</p>
 <p>The application used in this lab corresponds to the application developed in Lab 1.</p>
 <h2 id="before-starting">Before Starting</h2>
-<p>Make sure you have:
-- IBM Bob access
-- Python 3.8+
-- Node.js 14+
-- A terminal
-- A local workspace where Bob can create files and run commands</p>
-<p>Download the application ZIP file <a href="../assets/lab2/application.zip">here</a>. Place it somewhere easily accessible on your computer, such as:
-- Desktop
-- Documents folder
-- Downloads folder</p>
+<p>Make sure you have:</p>
+<ul>
+<li>IBM Bob access</li>
+<li>Python 3.8+</li>
+<li>Node.js 14+</li>
+<li>A terminal</li>
+<li>A local workspace where Bob can create files and run commands</li>
+</ul>
+<p>Download the application ZIP file <a href="../assets/lab2/application.zip">here</a>. Place it somewhere easily accessible on your computer, such as:</p>
+<ul>
+<li>Desktop</li>
+<li>Documents folder</li>
+<li>Downloads folder</li>
+</ul>
 <p>You will extract and open this project in IBM Bob during the first step of the lab.</p>
 <h2 id="what-youll-learn">What You'll Learn</h2>
-<p>By the end of this lab, you will:
-- ✅ Use Bob to understand an unfamiliar codebase
-- ✅ Learn how Bob analyzes project structure and dependencies
-- ✅ Identify which files need to be modified for a feature request
-- ✅ Compare Ask Mode vs Agent Mode behaviors
-- ✅ Understand approval workflows and auto-approvals
-- ✅ Modify an existing full-stack application</p>
+<p>By the end of this lab, you will:</p>
+<ul>
+<li>✅ Use Bob to understand an unfamiliar codebase</li>
+<li>✅ Learn how Bob analyzes project structure and dependencies</li>
+<li>✅ Identify which files need to be modified for a feature request</li>
+<li>✅ Compare Ask Mode vs Agent Mode behaviors</li>
+<li>✅ Understand approval workflows and auto-approvals</li>
+<li>✅ Modify an existing full-stack application</li>
+</ul>
 <h2 id="understanding-ask-mode-vs-agent-mode">Understanding Ask Mode vs Agent Mode</h2>
 <p>This lab demonstrated an important distinction between Bob modes:</p>
 <table>
@@ -1686,11 +1692,13 @@ However, some visual or structural differences may exist compared to the referen
 <hr />
 <h2 id="step-2-understanding-the-existing-application">Step 2: Understanding the existing application</h2>
 <h3 id="21-analyze-and-document-the-project-structure">2.1: Analyze and document the project structure</h3>
-<p>Before modifying an application, developers first need to understand:
-- What the application does
-- How the frontend and backend communicate
-- Which files are responsible for specific features
-- How the project is structured</p>
+<p>Before modifying an application, developers first need to understand:</p>
+<ul>
+<li>What the application does</li>
+<li>How the frontend and backend communicate</li>
+<li>Which files are responsible for specific features</li>
+<li>How the project is structured</li>
+</ul>
 <p>This is where Bob becomes especially useful.</p>
 <p>Switch to <strong>Ask Mode</strong> and ask Bob:</p>
 <pre><code class="language-text">Please analyze this application and explain:
@@ -1701,11 +1709,13 @@ However, some visual or structural differences may exist compared to the referen
 </code></pre>
 <p><img alt="7" src="../assets/lab2/images/7.png"></p>
 <p>Bob will analyze the existing codebase and help you quickly understand how the application works.</p>
-<p>This is particularly valuable when working with:
-- Large projects
-- Legacy applications
-- Applications created by other developers
-- Unfamiliar frameworks or architectures</p>
+<p>This is particularly valuable when working with:</p>
+<ul>
+<li>Large projects</li>
+<li>Legacy applications</li>
+<li>Applications created by other developers</li>
+<li>Unfamiliar frameworks or architectures</li>
+</ul>
 <p><strong>✅ Checkpoint</strong>: You now understand the structure and responsibilities of the main application files.</p>
 <hr />
 <h2 id="step-3-identifying-required-file-changes">Step 3: Identifying required file changes</h2>
@@ -1742,12 +1752,14 @@ However, some visual or structural differences may exist compared to the referen
 <h3 id="51-switch-to-agent-mode">5.1: Switch to Agent Mode</h3>
 <p>In order to finish implementing this new feature, let's switch to <strong>Agent Mode</strong>.</p>
 <p><img alt="14" src="../assets/lab2/images/14.png"></p>
-<p>Unlike Ask Mode, Agent Mode can:
-- Modify files
-- Create new code
-- Refactor existing logic
-- Execute commands
-- Implement features directly in the project</p>
+<p>Unlike Ask Mode, Agent Mode can:</p>
+<ul>
+<li>Modify files</li>
+<li>Create new code</li>
+<li>Refactor existing logic</li>
+<li>Execute commands</li>
+<li>Implement features directly in the project</li>
+</ul>
 <hr />
 <h3 id="52-ask-bob-to-implement-the-feature">5.2: Ask Bob to implement the feature</h3>
 <p>Ask Bob:</p>
@@ -1763,20 +1775,24 @@ Modify all the necessary files.
 <hr />
 <h3 id="53-reviewing-bobs-proposed-changes">5.3: Reviewing Bob's proposed changes</h3>
 <p>Before modifying files, Bob may ask for approval depending on your settings.</p>
-<p>You will likely see:
-- Proposed file changes
-- Generated task lists
-- Code diffs
-- Approval buttons</p>
+<p>You will likely see:</p>
+<ul>
+<li>Proposed file changes</li>
+<li>Generated task lists</li>
+<li>Code diffs</li>
+<li>Approval buttons</li>
+</ul>
 <p>This approval flow is important because it keeps developers in control of the generated code.</p>
 <hr />
 <h3 id="54-apply-the-generated-changes">5.4: Apply the generated changes</h3>
 <p>Approve the generated changes and let Bob update the application files.</p>
-<p>Once completed, Bob should modify:
-- The frontend interface
-- The frontend JavaScript logic
-- The backend API endpoint
-- Any necessary styling</p>
+<p>Once completed, Bob should modify:</p>
+<ul>
+<li>The frontend interface</li>
+<li>The frontend JavaScript logic</li>
+<li>The backend API endpoint</li>
+<li>Any necessary styling</li>
+</ul>
 <p><strong>✅ Checkpoint</strong>: Bob successfully updated the application files.</p>
 <hr />
 <h2 id="step-6-testing-the-updated-application">Step 6: Testing the updated application</h2>
@@ -1803,11 +1819,13 @@ Modify all the necessary files.
 3. Click the new "Delete Completed" button
 4. ✅ Completed tasks should be removed</p>
 <p><img alt="19" src="../assets/lab2/images/19.png"></p>
-<p>If the application does not work correctly, ask Bob to:
-- Analyze the issue
-- Identify the root cause
-- Suggest a fix
-- Apply the correction</p>
+<p>If the application does not work correctly, ask Bob to:</p>
+<ul>
+<li>Analyze the issue</li>
+<li>Identify the root cause</li>
+<li>Suggest a fix</li>
+<li>Apply the correction</li>
+</ul>
 <p>This mirrors how developers commonly use AI assistants during real debugging workflows.</p>
 <hr />
 <h2 id="step-7-generate-documentation">Step 7: Generate documentation</h2>
@@ -1884,15 +1902,19 @@ Modify all the necessary files.
 <p><img alt="30" src="../assets/lab2/images/30.png"></p>
 <p><strong>✅ Checkpoint:</strong> You reviewed a Bob Finding, navigated to the affected code, and used Bob to propose a fix.</p>
 <h2 id="congratulations-youve-completed-lab-2">Congratulations 🎉 You've completed Lab 2!</h2>
-<p>You've successfully learned how to:
-- ✅ Understand an existing application using Bob
-- ✅ Analyze project structure and dependencies
-- ✅ Identify files involved in a feature implementation
-- ✅ Use Ask Mode for architecture understanding
-- ✅ Use Agent Mode for feature implementation
-- ✅ Generate documentation</p>
+<p>You've successfully learned how to:</p>
 <ul>
-<li>✅ Review and approve generated code changes</li>
+<li>✅ Understand an existing application using Bob</li>
+<li>✅ Analyze project structure and dependencies</li>
+<li>✅ Identify files involved in a feature implementation</li>
+<li>✅ Use Ask Mode for architecture understanding</li>
+<li>✅ Use Agent Mode for feature implementation</li>
+<li>
+<p>✅ Generate documentation</p>
+</li>
+<li>
+<p>✅ Review and approve generated code changes</p>
+</li>
 </ul>
 <p>This workflow closely reflects how AI-assisted software development is increasingly used in real enterprise environments.</p>
 <hr />

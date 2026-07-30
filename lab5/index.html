@@ -1306,27 +1306,33 @@
 <p>In this lab, you'll use Bob to modernize a legacy Java application by analyzing an older codebase, defining a migration plan, and applying targeted upgrades toward Java 17.</p>
 <p>This lab is intentionally more advanced than the previous Bob labs. The goal is not only to refactor code, but to practice how Bob can support a phased modernization workflow across architecture, language features, and dependencies.</p>
 <h2 id="before-starting">Before Starting</h2>
-<p>Make sure you have:
-- IBM Bob access
-- A JDK for Java 17
-- Maven
-- A terminal
-- A local workspace where Bob can create files and run commands</p>
+<p>Make sure you have:</p>
+<ul>
+<li>IBM Bob access</li>
+<li>A JDK for Java 17</li>
+<li>Maven</li>
+<li>A terminal</li>
+<li>A local workspace where Bob can create files and run commands</li>
+</ul>
 <h2 id="what-youll-modernize">What You'll Modernize</h2>
 <p>This lab uses the legacy Java project in <code>legacy/</code> as the starting point.</p>
-<p>You will use Bob to:
-- Analyze Java 8-style code
-- Identify modernization opportunities
-- Generate migration notes and planning artifacts
-- Create a modernized target structure
-- Upgrade language and API usage</p>
+<p>You will use Bob to:</p>
+<ul>
+<li>Analyze Java 8-style code</li>
+<li>Identify modernization opportunities</li>
+<li>Generate migration notes and planning artifacts</li>
+<li>Create a modernized target structure</li>
+<li>Upgrade language and API usage</li>
+</ul>
 <h2 id="what-youll-learn">What You'll Learn</h2>
-<p>By the end of this lab, you will:
-- ✅ Use Bob to inspect a legacy Java codebase
-- ✅ Create a phased migration plan
-- ✅ Modernize domain models and business logic
-- ✅ Update dependencies and build configuration
-- ✅ Validate a migration path toward Java 17</p>
+<p>By the end of this lab, you will:</p>
+<ul>
+<li>✅ Use Bob to inspect a legacy Java codebase</li>
+<li>✅ Create a phased migration plan</li>
+<li>✅ Modernize domain models and business logic</li>
+<li>✅ Update dependencies and build configuration</li>
+<li>✅ Validate a migration path toward Java 17</li>
+</ul>
 <h2 id="lab-structure">Lab Structure</h2>
 <ul>
 <li><a href="#step-1-review-the-legacy-application">Review the legacy application</a></li>
@@ -1341,12 +1347,14 @@
 <h3 id="11-download-and-open-the-lab-folder-in-bob">1.1: Download and open the lab folder in Bob</h3>
 <p>Download the legacy application ZIP file <a href="../assets/lab5/legacy-app.zip">here</a>. Extract it to a new local folder and open the extracted project in IBM Bob before starting the lab.</p>
 <p><img alt="1" src="../assets/lab5/images/1.png"></p>
-<p>The sample includes models and services such as:
-- <code>legacy/src/main/java/com/example/ecommerce/model/Product.java</code>
-- <code>legacy/src/main/java/com/example/ecommerce/model/Order.java</code>
-- <code>legacy/src/main/java/com/example/ecommerce/service/PaymentService.java</code>
-- <code>legacy/src/main/java/com/example/ecommerce/service/OrderService.java</code>
-- <code>legacy/pom.xml</code></p>
+<p>The sample includes models and services such as:</p>
+<ul>
+<li><code>legacy/src/main/java/com/example/ecommerce/model/Product.java</code></li>
+<li><code>legacy/src/main/java/com/example/ecommerce/model/Order.java</code></li>
+<li><code>legacy/src/main/java/com/example/ecommerce/service/PaymentService.java</code></li>
+<li><code>legacy/src/main/java/com/example/ecommerce/service/OrderService.java</code></li>
+<li><code>legacy/pom.xml</code></li>
+</ul>
 <p><strong>✅ Checkpoint</strong>: The legacy Java project is open in your workspace.</p>
 <h3 id="12-switch-to-ask-mode">1.2: Switch to Ask Mode</h3>
 <p>Change to <strong>Ask Mode</strong>.</p>
@@ -1376,9 +1384,11 @@ Include:
 4. What should go into migration-guide/
 5. What should go into a future modernized/ target folder
 </code></pre>
-<p>Bob may recommend creating folders such as:
-- <code>modernized/</code>
-- <code>migration-guide/</code></p>
+<p>Bob may recommend creating folders such as:</p>
+<ul>
+<li><code>modernized/</code></li>
+<li><code>migration-guide/</code></li>
+</ul>
 <p>That is expected. These folders are part of the modernization workflow and do not need to exist before the lab begins.</p>
 <p><img alt="5" src="../assets/lab5/images/5.png"></p>
 <p><strong>✅ Checkpoint</strong>: You have a structured migration plan before editing code.</p>
@@ -1448,11 +1458,13 @@ Call out anything that could block a move from Java 8 to Java 17.
 <p><strong>✅ Checkpoint</strong>: You have validated the migration path and captured the remaining work.</p>
 <hr />
 <h2 id="congratulations-youve-completed-lab-5">Congratulations 🎉 You've completed Lab 5!</h2>
-<p>You've successfully used Bob to:
-- ✅ Assess a legacy Java codebase
-- ✅ Plan a phased modernization
-- ✅ Apply targeted Java 17-style improvements
-- ✅ Review migration risks across both code and dependencies</p>
+<p>You've successfully used Bob to:</p>
+<ul>
+<li>✅ Assess a legacy Java codebase</li>
+<li>✅ Plan a phased modernization</li>
+<li>✅ Apply targeted Java 17-style improvements</li>
+<li>✅ Review migration risks across both code and dependencies</li>
+</ul>
 <hr />
 <h2 id="lab-quiz-complete-the-workshop">🎓 Lab Quiz — Complete the Workshop</h2>
 <div class="lab-quiz" id="quiz-lab5" data-final="true">
@@ -1499,7 +1511,7 @@ Call out anything that could block a move from Java 8 to Java 17.
     <h2>Congratulations!</h2>
     <p>You completed all the Labs!</p>
     <p>Please, take a moment to give us some feedback 😊</p>
-    <a href="https://pt.surveymonkey.com/r/N75YFFT" target="_blank">https://pt.surveymonkey.com/r/N75YFFT</a>
+    <a href="https://pt.surveymonkey.com/r/JPNJBCK" target="_blank">https://pt.surveymonkey.com/r/N75YFFT</a>
     <br><br>
     <button onclick="document.getElementById('congrats-modal').hidden=true">Close</button>
   </div>

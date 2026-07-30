@@ -1152,27 +1152,35 @@
 <p>In this lab, you'll use Bob to translate a Python data-processing script into an equivalent JavaScript implementation while preserving functionality and applying language-specific best practices.</p>
 <p>This reflects a common real-world scenario where teams modernize utilities, port internal tools, or move logic between runtimes without rewriting everything manually.</p>
 <h2 id="before-starting">Before Starting</h2>
-<p>Make sure you have:
-- IBM Bob access
-- Python 3.8+
-- Node.js 14+
-- A terminal
-- A local workspace where Bob can create files and run commands</p>
-<p>Helpful but not required:
-- Basic familiarity with Python and JavaScript</p>
+<p>Make sure you have:</p>
+<ul>
+<li>IBM Bob access</li>
+<li>Python 3.8+</li>
+<li>Node.js 14+</li>
+<li>A terminal</li>
+<li>A local workspace where Bob can create files and run commands</li>
+</ul>
+<p>Helpful but not required:</p>
+<ul>
+<li>Basic familiarity with Python and JavaScript</li>
+</ul>
 <h2 id="what-youll-translate">What You'll Translate</h2>
 <p>You will translate the Python source file <code>source/data_processor.py</code> into a Node.js implementation.</p>
-<p>The Python script:
-- Reads CSV files
-- Performs statistical calculations
-- Exports results to JSON</p>
+<p>The Python script:</p>
+<ul>
+<li>Reads CSV files</li>
+<li>Performs statistical calculations</li>
+<li>Exports results to JSON</li>
+</ul>
 <h2 id="what-youll-learn">What You'll Learn</h2>
-<p>By the end of this lab, you will:
-- ✅ Use Ask Mode to understand the source code
-- ✅ Use Plan Mode to design a translation strategy
-- ✅ Use Agent Mode to implement the JavaScript version
-- ✅ Compare Python features with JavaScript equivalents
-- ✅ Validate that both versions produce the same outcome</p>
+<p>By the end of this lab, you will:</p>
+<ul>
+<li>✅ Use Ask Mode to understand the source code</li>
+<li>✅ Use Plan Mode to design a translation strategy</li>
+<li>✅ Use Agent Mode to implement the JavaScript version</li>
+<li>✅ Compare Python features with JavaScript equivalents</li>
+<li>✅ Validate that both versions produce the same outcome</li>
+</ul>
 <h2 id="lab-structure">Lab Structure</h2>
 <ul>
 <li><a href="#step-1-review-the-python-source">Review the Python source</a></li>
@@ -1185,13 +1193,15 @@
 <h3 id="11-download-and-open-the-lab-folder-in-bob">1.1: Download and open the lab folder in Bob</h3>
 <p>Download the lab files ZIP <a href="../assets/lab4/source.zip">here</a>. Extract it to a new local folder and open that extracted folder in IBM Bob before starting the exercise.</p>
 <p><img alt="1" src="../assets/lab4/images/1.png"></p>
-<p>Review the code structure and pay attention to:
-- Class-based design
-- Type hints
-- Context managers such as <code>with open(...)</code>
-- List comprehensions
-- Dictionary operations
-- CSV and JSON handling</p>
+<p>Review the code structure and pay attention to:</p>
+<ul>
+<li>Class-based design</li>
+<li>Type hints</li>
+<li>Context managers such as <code>with open(...)</code></li>
+<li>List comprehensions</li>
+<li>Dictionary operations</li>
+<li>CSV and JSON handling</li>
+</ul>
 <p><strong>✅ Checkpoint</strong>: You have reviewed the Python source file.</p>
 <h3 id="12-switch-to-ask-mode">1.2: Switch to Ask Mode</h3>
 <p>Change to <strong>Ask Mode</strong>.</p>
@@ -1212,11 +1222,13 @@
 <pre><code class="language-text">What challenges should we expect when translating source/data_processor.py from Python to JavaScript?
 Consider syntax, libraries, async file handling, and type documentation.
 </code></pre>
-<p>Bob should highlight differences such as:
-- <code>with open(...)</code> versus Node.js file and stream APIs
-- <code>csv.DictReader</code> versus <code>csv-parser</code>
-- Type hints versus JSDoc
-- List comprehensions versus array methods</p>
+<p>Bob should highlight differences such as:</p>
+<ul>
+<li><code>with open(...)</code> versus Node.js file and stream APIs</li>
+<li><code>csv.DictReader</code> versus <code>csv-parser</code></li>
+<li>Type hints versus JSDoc</li>
+<li>List comprehensions versus array methods</li>
+</ul>
 <p><strong>✅ Checkpoint</strong>: You understand the main translation challenges.</p>
 <hr />
 <h2 id="step-2-plan-the-translation">Step 2: Plan the translation</h2>
@@ -1277,11 +1289,13 @@ Compare their outputs and confirm whether both implementations create equivalent
 <p><strong>✅ Checkpoint</strong>: Both implementations behave consistently.</p>
 <hr />
 <h2 id="congratulations-youve-completed-lab-4">Congratulations 🎉 You've completed Lab 4!</h2>
-<p>You've successfully used Bob to:
-- ✅ Analyze Python code
-- ✅ Plan a language translation
-- ✅ Generate a JavaScript implementation
-- ✅ Compare behavior across runtimes</p>
+<p>You've successfully used Bob to:</p>
+<ul>
+<li>✅ Analyze Python code</li>
+<li>✅ Plan a language translation</li>
+<li>✅ Generate a JavaScript implementation</li>
+<li>✅ Compare behavior across runtimes</li>
+</ul>
 <hr />
 <h2 id="lab-quiz-unlock-the-next-lab">🎓 Lab Quiz — Unlock the Next Lab</h2>
 <div class="lab-quiz" id="quiz-lab4" data-unlocks="lab5">
